@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>My New Blog | Hexo</title>
+        <title>Hexo</title>
         <meta name="author" content="John Doe">
         <meta name="description" content="">
         <meta name="keywords" content="">
@@ -122,7 +122,7 @@
                         
 <div class="article">
     <div>
-        <h1>My New Blog </h1>
+        <h1> </h1>
     </div>
     <div class="info">
         <span class="date">
@@ -133,24 +133,55 @@
         </span>
         
         
-        <span class="tags">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/“我的新的博客”/" style="color: #ffa2c4">
-                    “我的新的博客”
-                </a>
-            </span>
-            
-        </span>
-        
     </div>
     <div class="content" v-pre>
-        <h1 id="我的第一篇博客文章"><a href="#我的第一篇博客文章" class="headerlink" title="我的第一篇博客文章"></a>我的第一篇博客文章</h1><p>博客内容</p>
-<h4 id="标题二"><a href="#标题二" class="headerlink" title="标题二"></a>标题二</h4>
+        <h4 id="1-服务启动"><a href="#1-服务启动" class="headerlink" title="1.服务启动"></a>1.服务启动</h4><p>启动MySQL服务的方式有命令行启动以及图形界面方式启动。</p>
+<p>命令行启动如下：</p>
+<p>MySQL服务启动:</p>
+<pre><code class="mysql">net  start  mysql
+</code></pre>
+<p><img src="E:\Typora\mysql学习笔记\img\2.png"></p>
+<p>MySQL服务停止:</p>
+<pre><code class="mysql">net stop mysql
+</code></pre>
+<p><img src="E:\Typora\mysql学习笔记\img\1.png"></p>
+<h4 id="2-登录"><a href="#2-登录" class="headerlink" title="2.登录"></a>2.登录</h4><p>启动MySQL 服务后通过如下的命令可以登录</p>
+<pre><code class="mysql">mysql -u root -P 端口号  -h 主机 -p            
+</code></pre>
+<blockquote>
+<p>其中-u 代表的是用户 其后的root代表root权限的用户。-P代表端口号。-h代表主机自己本地的主机就写l<code>localhost</code> ,远程连接的主机就写主机的ip地址。-p代表密码。</p>
+</blockquote>
+<p>输入以上命令后就可以输入密码登录了。</p>
+<p><img src="E:\Typora\mysql学习笔记\img\3.png"></p>
+<blockquote>
+<p>如果访问的是本机，且端口号为默认的3306，则-P和-h可以不写,改为如下的简写</p>
+</blockquote>
+<pre><code class="mysql">mysql -u root -p
+</code></pre>
+<h4 id="3-退出登录"><a href="#3-退出登录" class="headerlink" title="3.退出登录"></a>3.退出登录</h4><p>输入<code>quit</code>或<code>exit</code></p>
+<h4 id="4-查看编码命令"><a href="#4-查看编码命令" class="headerlink" title="4.查看编码命令"></a>4.查看编码命令</h4><pre><code class="mysql">show variables like &#39;character_%&#39;     /*查看字符集*/
+show variables like &#39;collation_%&#39;     /*查看校对规则*/
+</code></pre>
+<blockquote>
+<p>如果是mysql5则需要更改字符集为utf-8，如果是mysql8则默认为utf-8</p>
+<ul>
+<li><p>修改mysql数据目录（data）下的my.ini配置文件</p>
+</li>
+<li><pre><code class="ini">[mysql]#大概在63行，在其下添加
+...
+default-character-set = utf8 #默认字符集
+...
+[mysql]#大概在76行，在其下添加
+...
+character-set-server=utf-8
+collation-server=utf8_general_ci
+</code></pre>
+</li>
+<li><p>修改字符集后重启服务</p>
+</li>
+</ul>
+</blockquote>
+
     </div>
     
 </div>

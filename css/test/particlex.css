@@ -857,11 +857,12 @@ pre .language {
 .content .markdownIt-Anchor {
     display: none;
 }
+/* 代码所用语言提示 */
 .content .language {
     font-family: "Fira Code", monospace;
     position: absolute;
     top: 0px;
-    padding: 10px 15px;
+    padding: 6px 12px;
     background: -webkit-linear-gradient(to right, #ed6ea0 0, #ec8c69 100%);
     background: -moz-linear-gradient(to right, #ed6ea0 0, #ec8c69 100%);
     background: -o-linear-gradient(to right, #ed6ea0 0, #ec8c69 100%);
