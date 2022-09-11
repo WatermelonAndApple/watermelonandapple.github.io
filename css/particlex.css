@@ -295,7 +295,6 @@ blockquote {
     border-radius: 3px;
     border-left: 3px solid #1e3e3f;
     font-weight: bold;
-    background: #d9e8ff6b;
 }
 button,
 img,
@@ -776,18 +775,21 @@ pre .language {
 }
 .content code {
     font-family: "Fira Code", monospace;
-    background: rgba(189, 220, 247, 0.42);
+    background: rgba(234, 226, 226, 0.36);
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 14px;
     color: #4b616b;
 }
+/* 代码段 */
 .content pre {
+    /* //背景颜色 */
+    background-color: rgba(240, 240, 240, 0.5);
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
     border: 1px solid #ebeef5;
-    padding: 50px 30px 20px;
+    padding: 30px 20px;
     margin: 25px 0;
-    border-radius: 15px;
+    border-radius: 10px;
     overflow: auto;
     position: relative;
 }
@@ -857,26 +859,31 @@ pre .language {
 .content .markdownIt-Anchor {
     display: none;
 }
+/* 代码片段的语言显示 */
 .content .language {
+    /* 文字居中 */
+    text-align: center;
     font-family: "Fira Code", monospace;
     position: absolute;
     top: 0px;
-    padding: 10px 15px;
-    background: -webkit-linear-gradient(to right, #ed6ea0 0, #ec8c69 100%);
-    background: -moz-linear-gradient(to right, #ed6ea0 0, #ec8c69 100%);
-    background: -o-linear-gradient(to right, #ed6ea0 0, #ec8c69 100%);
-    background: linear-gradient(to right, #ed6ea0 0, #ec8c69 100%);
-    box-shadow: 1px 1px 0.75rem rgba(237, 110, 161, 0.302);
+    /* right:10px; */
+    padding: 8px 16px;
+    /* 背景 */
+    background: -webkit-linear-gradient(to right, #cfbca6 0, #e7d4bc 100%);
+    background: -moz-linear-gradient(to right,  #cfbca6 0, #e7d4bc 100%);
+    background: -o-linear-gradient(to right,   #cfbca6 0, #e7d4bc 100%);
+    background: linear-gradient(to right,   #cfbca6 0, #e7d4bc 100%);
+    box-shadow: 3px 4px 5px #EBD8C36e;
     color: #fff;
     font-weight: bold;
-    font-size: 12px;
-    border-radius: 0 0 10px 10px;
+    font-size: 14px;
+    border-radius: 0 0 8px 8px;
 }
 .content .hljs {
     font-family: "Fira Code", monospace;
     background: none;
     line-height: 2;
-    font-size: 13px;
+    font-size: 14px;
 }
 .content .hljs .hljs-built_in {
     color: #42a4d6;
@@ -1021,13 +1028,17 @@ footer .footer-icon {
 .categories-tags #archives {
     top: 60px;
 }
+/* 整个文章 */
 .article {
+    /* 背景  */
+    background-color: #fff;
+    border-radius: 15px;
     margin: auto;
     position: relative;
     top: 100px;
     color: #1e3e3f;
-    padding: 20px;
-    font-size: 15px;
+    padding: 30px;
+    font-size: 16px;
 }
 .article h1 {
     font-weight: bold;
@@ -1279,7 +1290,7 @@ footer .footer-icon {
         width: 900px;
     }
     .content .language {
-        left: 30px;
+        right: 30px;
     }
     #archives {
         width: 900px;
@@ -1381,8 +1392,9 @@ footer .footer-icon {
     .article {
         width: 85%;
     }
+    /* 代码段语言的显示位置 */
     .content .language {
-        left: 5%;
+        right: 5%;
     }
     #archives {
         width: 90%;

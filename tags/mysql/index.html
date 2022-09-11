@@ -4,8 +4,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>Hexo</title>
-        <meta name="author" content="John Doe">
+        <title>Tags: Mysql | 瓜田の鼹鼠</title>
+        <meta name="author" content="瓜田の鼹鼠">
         <meta name="description" content="">
         <meta name="keywords" content="">
         <link rel="icon" href="https://w.wallhaven.cc/full/m9/wallhaven-m9xp5m.jpg">
@@ -30,7 +30,7 @@
 <nav id="menu">
     <div class="desktop-menu">
         <a href="/">
-            <span class="title">Hexo</span>
+            <span class="title">瓜田の鼹鼠</span>
         </a>
         
         <a href="/">
@@ -63,7 +63,7 @@
         <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
         <div :class="'title'" @click="menu_show = !menu_show">
             <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;Hexo</span>
+            <span>&emsp;瓜田の鼹鼠</span>
         </div>
         <transition name="slide">
         <div class="items" v-show="menu_show">
@@ -119,108 +119,157 @@
 </nav>
                     </div>
                     <div id="main">
-                        
-<div class="article">
-    <div>
-        <h1> </h1>
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/9/7
+                         
+<div class="categories-tags">
+    
+    <div class="all-s">
+        
+        
+        <span>
+            <a href="/tags/mysql/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+                </span>
+                mysql
+            </a>
         </span>
         
         
+        <span>
+            <a href="/tags/数据库/" style="background: #ffa2c4">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+                </span>
+                数据库
+            </a>
+        </span>
+        
+        
+        <span>
+            <a href="/tags/sql/" style="background: #ffa2c4">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+                </span>
+                sql
+            </a>
+        </span>
+        
     </div>
-    <div class="content" v-pre>
-        <h1 id="MySQL学习"><a href="#MySQL学习" class="headerlink" title="MySQL学习"></a>MySQL学习</h1><h4 id="1-MySQL简介"><a href="#1-MySQL简介" class="headerlink" title="1.MySQL简介"></a>1.MySQL简介</h4><ul>
-<li><h6 id="历史："><a href="#历史：" class="headerlink" title="历史："></a>历史：</h6><ul>
-<li>有瑞典的MySQL AB公司创立，1995年开发出MySQL。</li>
-<li>2008年，MySQL被SUN公司收购。</li>
-<li>2009年，Oracle公司受够了SUN公司，进而Oracle公司获取了MySQL。</li>
-<li>2016年，MySQL8.0.0版本推出。</li>
-</ul>
-</li>
-<li><h6 id="特点"><a href="#特点" class="headerlink" title="特点:"></a>特点:</h6><ul>
-<li>开源的、关系型的数据库。</li>
-<li>支持千万级别的数据量的存储。</li>
-</ul>
-</li>
-</ul>
-<h4 id="2-SQL概述"><a href="#2-SQL概述" class="headerlink" title="2.SQL概述"></a>2.SQL概述</h4><h5 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h5><p>SQL(Structured Query Language, 结构化查询语言)是使用关系模型和数据库应用语言，其直接与数据库打交道，有IBM上世纪70年代开发出来。后来由美国国家标准局（ANSI）开始着手制定SQL标准，先后有<code>SQL-86,SQL-89,SQL-92,SQL-99</code>等标准。</p>
-<h6 id="SQL分类"><a href="#SQL分类" class="headerlink" title="SQL分类"></a>SQL分类</h6><p>SQL在语言功能上主要分为以下3大类：</p>
-<ul>
-<li>DDL(Data Definition Languages、数据定义语言)，这些语句定了不同的数据库、表、视图、索引等数据库对象，还可以用来创建、删除、修改数据库和数据表的结构。</li>
-<li>DML（Data Manipulation Language、数据操作语言），用于添加、删除、更新和查询数据库记录，并检查数据完整性。</li>
-<li>DCL（Data Control Language、数据控制语言），用于定义数据、表、字段、用户的权限和安全级别。</li>
-</ul>
-<pre><code class="mysql">/*
-1.SQL的分类
-DDL:数据定义语言
-如：
-CREATE \ ALTER \ DROP \ RENAME \ TRUNCATE
-DML:数据操作语言
-如：
-INSERT \ DELETE \ UPDATE \ SELECT 
-DCL:数据控制语言
-如：
-COMMIT \ ROLLBACK \ SAVEPOINT \ GRANT \ REVOKE
-*/
-</code></pre>
-<h5 id="2-2-SQL语言的规则与规范"><a href="#2-2-SQL语言的规则与规范" class="headerlink" title="2.2 SQL语言的规则与规范"></a>2.2 SQL语言的规则与规范</h5><blockquote>
-<p><font color="#f3838" size=3>MySQL在Windows环境下的大小写并不敏感。</font></p>
-<p><font color="#f3838" size=3>MySQL在Linux环境下的大小写是敏感的。</font></p>
-<p><font color="#f4040" size=4>推荐采用如下的书写规范：</font></p>
-<ul>
-<li>数据库名、表名、字段名、字段别名、表别名等小写。</li>
-<li>SQL关键字、函数名、绑定变量等都大写。</li>
-</ul>
-</blockquote>
-<ul>
-<li><h6 id="基本规则"><a href="#基本规则" class="headerlink" title="基本规则"></a>基本规则</h6><ul>
-<li>SQL语句可以写在一行或多行。为了提高可读性，各句分行写，必要时缩进</li>
-<li>每条命令以；或\g或\G结束</li>
-<li>关键字不能缩写也不能分行</li>
-<li>字符串和日期时间类型的数据可以使用单引号（’’）表示</li>
-<li>列的别名，尽量使用双引号（””），而且不建议省略as</li>
-</ul>
-</li>
-<li><h6 id="MySQL注释"><a href="#MySQL注释" class="headerlink" title="MySQL注释"></a>MySQL注释</h6><ul>
-<li><p>单行注释:<code>#注释</code>以及<code>--注释</code>。</p>
-</li>
-<li><pre><code class="mysql">#这是单行注释
--- 这也是单行注释
-</code></pre>
-</li>
-<li><p>多行注释：<code>/*注释*/</code></p>
-</li>
-<li><pre><code class="mysql">/*这是一条
-多行注释*/
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-<h4 id="3-SQL数据的导入"><a href="#3-SQL数据的导入" class="headerlink" title="3.SQL数据的导入"></a>3.SQL数据的导入</h4><p>方式1：使用命令行命令：</p>
-<pre><code class="mysql">source 文件的全路径名
-</code></pre>
-<p>方式2：基于图形化界面的工具可以导入</p>
-<p>（1）右键连接名（2）SQL文件位置（3）执行</p>
-
+    <div id="archives">
+        
+        <div class="timeline">
+            <div class="timeline-tail"></div>
+            <div class="timeline-content">
+                <div class="item-time">2022/9/6</div>
+                <a href="/2022/09/06/2.MySQL/">
+                    <h3>MySQL学习</h3>
+                </a>
+                <div class="info">
+                    
+                    <span class="category">
+                        <a href="/categories/数据库/">
+                            <span class="icon">
+                                <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                            </span>
+                            数据库
+                        </a>
+                    </span>
+                    
+                    
+                    <span class="tags">
+                        <span class="icon">
+                            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+                        </span>
+                        
+                        <span class="tag">
+                            
+                            <a href="/tags/mysql/" style="color: #03a9f4">
+                                mysql
+                            </a>
+                        </span>
+                        
+                        <span class="tag">
+                            
+                            <a href="/tags/数据库/" style="color: #00bcd4">
+                                数据库
+                            </a>
+                        </span>
+                        
+                        <span class="tag">
+                            
+                            <a href="/tags/sql/" style="color: #ffa2c4">
+                                sql
+                            </a>
+                        </span>
+                        
+                    </span>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-tail"></div>
+            <div class="timeline-content">
+                <div class="item-time">2022/9/5</div>
+                <a href="/2022/09/05/1.MySQL入门/">
+                    <h3>MySQL入门</h3>
+                </a>
+                <div class="info">
+                    
+                    <span class="category">
+                        <a href="/categories/数据库/">
+                            <span class="icon">
+                                <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                            </span>
+                            数据库
+                        </a>
+                    </span>
+                    
+                    
+                    <span class="tags">
+                        <span class="icon">
+                            <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+                        </span>
+                        
+                        <span class="tag">
+                            
+                            <a href="/tags/mysql/" style="color: #ff7d73">
+                                mysql
+                            </a>
+                        </span>
+                        
+                        <span class="tag">
+                            
+                            <a href="/tags/数据库/" style="color: #ffa2c4">
+                                数据库
+                            </a>
+                        </span>
+                        
+                        <span class="tag">
+                            
+                            <a href="/tags/sql/" style="color: #03a9f4">
+                                sql
+                            </a>
+                        </span>
+                        
+                    </span>
+                    
+                </div>
+            </div>
+        </div>
+        
     </div>
-    
 </div>
                          
 <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 2022 - 2022 Hexo
+            © 2022 - 2022 瓜田の鼹鼠
             <span class="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
-            @John Doe
+            @瓜田の鼹鼠
         </div>
         <div></div>
         <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
