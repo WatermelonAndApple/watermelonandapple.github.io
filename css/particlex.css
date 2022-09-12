@@ -614,19 +614,26 @@ pre .language {
     border: none;
     box-shadow: 0 0 20px #d9d9d980;
 }
+/* 头像 */
 #home-card .card-style .avatar {
     text-align: center;
     margin: auto;
-    width: 106px;
-    height: 106px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     border: #f1f1f1 3px solid;
+}
+/* 当鼠标放在头像上时头像旋转360度*/
+#home-card .card-style .avatar:hover{
+   transition: all ease-in-out .24s;
+   transform: rotateZ(360deg);
 }
 #home-card .card-style .avatar img {
     border-radius: 50%;
     width: 100%;
     height: 100%;
 }
+/* 个人名 */
 #home-card .card-style .name {
     margin: 10px auto;
     color: #1e3e3f;
