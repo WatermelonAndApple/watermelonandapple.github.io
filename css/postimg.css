@@ -1,0 +1,38 @@
+/* 图片 */
+#home-posts .post .post-img{
+    position: absolute;
+    top: 0;
+    left: -320px;
+    height: 100%;
+    width: 320px;
+    overflow: hidden;
+}
+#home-posts .post .post-img img{
+    height: 100%;
+    width: 100%;
+    /* 图片大小自适应 */
+    object-fit: cover;
+    border-radius:20px ;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* 当屏幕宽度小于900px时不显示图像 */
+@media (max-width: 900px) {
+    #home-posts .post .post-img{
+       display: none;
+    }
+}
+/* 偶数的图片与文章信新通奇数的左右位置相反 */
+#home-posts .post:nth-of-type(even) .post-img{
+    left: 480px;
+}
+#home-posts .post:nth-of-type(even) .post-img img{
+    border-radius:20px ;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+canvas{
+    /* border: 1px red solid; */
+}
+

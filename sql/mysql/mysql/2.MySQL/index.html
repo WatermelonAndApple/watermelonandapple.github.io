@@ -1,10 +1,13 @@
 
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
-        <title>MySQL入门 | 瓜田の鼹鼠</title>
+        <title>
+            1.MySQL学习 | 瓜田の鼹鼠的个人博客
+        </title>
         <meta name="author" content="瓜田の鼹鼠">
         <meta name="description" content="">
         <meta name="keywords" content="瓜田里的鼹鼠,瓜田の鼹鼠的blog,鼹鼠的blog">
@@ -12,13 +15,29 @@
         <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
         <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
         
-        <link rel="stylesheet" href="/css/fonts.min.css">
-        <link rel="stylesheet" href="/css/particlex.css">
-        
-        <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+                <link rel="stylesheet" href="/css/fonts.min.css">
+                <link rel="stylesheet" href="/css/particlex.css">
+                <!-- 主页文章左边图片的css文件 -->
+                <link rel="stylesheet" href="/css/postimg.css">
+                
+                    <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
     <meta name="generator" content="Hexo 6.2.0"></head>
+
     <body>
-        <div id="loading" style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out"><div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center"><div id="loadcontent" style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center"><div><h2>LOADING...</h2><p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p><div><img alt="loading" src="/loading.gif"></div></div></div></div></div>
+        <!-- 加载动画 -->
+        <div id="loading"
+            style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out">
+            <div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center">
+                <div id="loadcontent"
+                    style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center">
+                    <div>
+                        <h2>LOADING...</h2>
+                        <p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p>
+                        <div><img alt="loading" src="/loading.gif"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="layout">
             <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
             <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
@@ -45,7 +64,7 @@
         
         <a href="/archives">
             <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;全部文档</span>
+            <span>&ensp;文章</span>
         </a>
         
         <a href="/categories">
@@ -91,7 +110,7 @@
                     <div style="min-width: 20px; max-width: 50px; width: 10%">
                         <i class="fa-solid fa-box-archive fa-fw"></i>
                     </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">全部文档</div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">文章</div>
                 </div>
             </a>
             
@@ -122,14 +141,14 @@
                         
 <div class="article">
     <div>
-        <h1>MySQL入门 </h1>
+        <h1>1.MySQL学习 </h1>
     </div>
     <div class="info">
         <span class="date">
             <span class="icon">
                 <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
             </span>
-            2022/9/5
+            2022/9/6
         </span>
         
         <span class="category">
@@ -149,14 +168,14 @@
             
             <span class="tag">
                 
-                <a href="/tags/mysql/" style="color: #00bcd4">
+                <a href="/tags/mysql/" style="color: #ffa2c4">
                     mysql
                 </a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/数据库/" style="color: #00a596">
+                <a href="/tags/数据库/" style="color: #ffa2c4">
                     数据库
                 </a>
             </span>
@@ -172,58 +191,85 @@
         
     </div>
     <div class="content" v-pre>
-        <h4 id="1-服务启动"><a href="#1-服务启动" class="headerlink" title="1.服务启动"></a>1.服务启动</h4><p>启动MySQL服务的方式有命令行启动以及图形界面方式启动。</p>
-<p>命令行启动如下：</p>
-<p>MySQL服务启动:</p>
-<pre><code class="mysql">net  start  mysql
-</code></pre>
-<p><img src="E:\Typora\mysql学习笔记\img\2.png"></p>
-<p>MySQL服务停止:</p>
-<pre><code class="mysql">net stop mysql
-</code></pre>
-<p><img src="E:\Typora\mysql学习笔记\img\1.png"></p>
-<h4 id="2-登录"><a href="#2-登录" class="headerlink" title="2.登录"></a>2.登录</h4><p>启动MySQL 服务后通过如下的命令可以登录</p>
-<pre><code class="mysql">mysql -u root -P 端口号  -h 主机 -p            
-</code></pre>
-<blockquote>
-<p>其中-u 代表的是用户 其后的root代表root权限的用户。-P代表端口号。-h代表主机自己本地的主机就写l<code>localhost</code> ,远程连接的主机就写主机的ip地址。-p代表密码。</p>
-</blockquote>
-<p>输入以上命令后就可以输入密码登录了。</p>
-<p><img src="E:\Typora\mysql学习笔记\img\3.png"></p>
-<blockquote>
-<p>如果访问的是本机，且端口号为默认的3306，则-P和-h可以不写,改为如下的简写</p>
-</blockquote>
-<pre><code class="mysql">mysql -u root -p
-</code></pre>
-<h4 id="3-退出登录"><a href="#3-退出登录" class="headerlink" title="3.退出登录"></a>3.退出登录</h4><p>输入<code>quit</code>或<code>exit</code></p>
-<h4 id="4-查看编码命令"><a href="#4-查看编码命令" class="headerlink" title="4.查看编码命令"></a>4.查看编码命令</h4><pre><code class="mysql">show variables like &#39;character_%&#39;     /*查看字符集*/
-show variables like &#39;collation_%&#39;     /*查看校对规则*/
-</code></pre>
-<blockquote>
-<p>如果是mysql5则需要更改字符集为utf-8，如果是mysql8则默认为utf-8</p>
-<ul>
-<li><p>修改mysql数据目录（data）下的my.ini配置文件</p>
+        <h4 id="1-MySQL简介"><a href="#1-MySQL简介" class="headerlink" title="1.MySQL简介"></a>1.MySQL简介</h4><ul>
+<li><h6 id="历史："><a href="#历史：" class="headerlink" title="历史："></a>历史：</h6><ul>
+<li>有瑞典的MySQL AB公司创立，1995年开发出MySQL。</li>
+<li>2008年，MySQL被SUN公司收购。</li>
+<li>2009年，Oracle公司受够了SUN公司，进而Oracle公司获取了MySQL。</li>
+<li>2016年，MySQL8.0.0版本推出。</li>
+</ul>
 </li>
-<li><pre><code class="ini">[mysql]#大概在63行，在其下添加
-...
-default-character-set = utf8 #默认字符集
-...
-[mysql]#大概在76行，在其下添加
-...
-character-set-server=utf-8
-collation-server=utf8_general_ci
-</code></pre>
-</li>
-<li><p>修改字符集后重启服务</p>
+<li><h6 id="特点"><a href="#特点" class="headerlink" title="特点:"></a>特点:</h6><ul>
+<li>开源的、关系型的数据库。</li>
+<li>支持千万级别的数据量的存储。</li>
+</ul>
 </li>
 </ul>
+<h4 id="2-SQL概述"><a href="#2-SQL概述" class="headerlink" title="2.SQL概述"></a>2.SQL概述</h4><h5 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h5><p>SQL(Structured Query Language, 结构化查询语言)是使用关系模型和数据库应用语言，其直接与数据库打交道，有IBM上世纪70年代开发出来。后来由美国国家标准局（ANSI）开始着手制定SQL标准，先后有<code>SQL-86,SQL-89,SQL-92,SQL-99</code>等标准。</p>
+<h6 id="SQL分类"><a href="#SQL分类" class="headerlink" title="SQL分类"></a>SQL分类</h6><p>SQL在语言功能上主要分为以下3大类：</p>
+<ul>
+<li>DDL(Data Definition Languages、数据定义语言)，这些语句定了不同的数据库、表、视图、索引等数据库对象，还可以用来创建、删除、修改数据库和数据表的结构。</li>
+<li>DML（Data Manipulation Language、数据操作语言），用于添加、删除、更新和查询数据库记录，并检查数据完整性。</li>
+<li>DCL（Data Control Language、数据控制语言），用于定义数据、表、字段、用户的权限和安全级别。</li>
+</ul>
+<pre><code class="mysql">/*
+1.SQL的分类
+DDL:数据定义语言
+如：
+CREATE \ ALTER \ DROP \ RENAME \ TRUNCATE
+DML:数据操作语言
+如：
+INSERT \ DELETE \ UPDATE \ SELECT 
+DCL:数据控制语言
+如：
+COMMIT \ ROLLBACK \ SAVEPOINT \ GRANT \ REVOKE
+*/
+</code></pre>
+<h5 id="2-2-SQL语言的规则与规范"><a href="#2-2-SQL语言的规则与规范" class="headerlink" title="2.2 SQL语言的规则与规范"></a>2.2 SQL语言的规则与规范</h5><blockquote>
+<p><font color="#f3838" size=3>MySQL在Windows环境下的大小写并不敏感。</font></p>
+<p><font color="#f3838" size=3>MySQL在Linux环境下的大小写是敏感的。</font></p>
+<p><font color="#f4040" size=4>推荐采用如下的书写规范：</font></p>
+<ul>
+<li>数据库名、表名、字段名、字段别名、表别名等小写。</li>
+<li>SQL关键字、函数名、绑定变量等都大写。</li>
+</ul>
 </blockquote>
+<ul>
+<li><h6 id="基本规则"><a href="#基本规则" class="headerlink" title="基本规则"></a>基本规则</h6><ul>
+<li>SQL语句可以写在一行或多行。为了提高可读性，各句分行写，必要时缩进</li>
+<li>每条命令以；或\g或\G结束</li>
+<li>关键字不能缩写也不能分行</li>
+<li>字符串和日期时间类型的数据可以使用单引号（’’）表示</li>
+<li>列的别名，尽量使用双引号（””），而且不建议省略as</li>
+</ul>
+</li>
+<li><h6 id="MySQL注释"><a href="#MySQL注释" class="headerlink" title="MySQL注释"></a>MySQL注释</h6><ul>
+<li><p>单行注释:<code>#注释</code>以及<code>--注释</code>。</p>
+</li>
+<li><pre><code class="mysql">#这是单行注释
+-- 这也是单行注释
+</code></pre>
+</li>
+<li><p>多行注释：<code>/*注释*/</code></p>
+</li>
+<li><pre><code class="mysql">/*这是一条
+多行注释*/
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-SQL数据的导入"><a href="#3-SQL数据的导入" class="headerlink" title="3.SQL数据的导入"></a>3.SQL数据的导入</h4><p>方式1：使用命令行命令：</p>
+<pre><code class="mysql">source 文件的全路径名
+</code></pre>
+<p>方式2：基于图形化界面的工具可以导入</p>
+<p>（1）右键连接名（2）SQL文件位置（3）执行</p>
 
     </div>
     <!-- 评论 -->
     
 </div>
-                         
+                             
 <footer id="footer">
     <div class="footer-wrap">
         <div>
@@ -249,7 +295,13 @@ collation-server=utf8_general_ci
         <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
         <script src="/js/particlex.js"></script>
         <script src="/js/showimg.js"></script>
+        <!-- 引入接受名人名言的js文件 -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="/js/mingrenminyan.js"></script>
+        <!-- 引入鼠标点击特效的js文件 -->
+        <script src="/js/firework.js"></script>
         
 
-    </body>
-</html>
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"debug":false,"model":{"scale":1.36,"hHeadPos":0.523,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false}});</script></body>
+
+    </html>

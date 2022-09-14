@@ -254,6 +254,7 @@ h3 {
     font-family: "Poppins", "Noto Sans SC", sans-serif;
     color: #1e3e3f;
     font-size: 24px;
+    text-align: left;
 }
 h4 {
     margin: 15px 0;
@@ -268,6 +269,7 @@ h5 {
     font-family: "Poppins", "Noto Sans SC", sans-serif;
     color: #1e3e3f;
     font-size: 18px;
+    text-align: right;
 }
 p {
     margin: 15px 0;
@@ -464,23 +466,34 @@ pre .language {
     position: relative;
     border-radius: 20px;
     background: #fff;
-    box-shadow: 0px 0px 20px rgba(217, 217, 217, 0.502);
+    box-shadow: 0px 0px 20px rgba(207, 207, 207, 0.5);
     -webkit-transition: all 0.25s;
     -moz-transition: all 0.25s;
     -o-transition: all 0.25s;
     transition: all 0.25s;
+    /* overflow: hidden; */
 }
 #home-posts .post:first-child {
     margin-top: 0;
 }
-#home-posts .post:hover {
+/* 鼠标移动到主页文章缩略上时 */
+#home-posts .post:hover{
+    box-shadow: 0 0 5px #d9d9d9;
+    -webkit-transform: translate(315px, -5px);
+    -moz-transform: translate(315px,-5px);
+    -o-transform: translate(315px, -5px);
+    -ms-transform: translate(315px, -5px);
+    transform: translate(315px, -5px);
+}
+#home-posts .post:nth-of-type(even):hover{
     box-shadow: 0 0 5px #d9d9d9;
     -webkit-transform: translate(-5px, -5px);
-    -moz-transform: translate(-5px, -5px);
+    -moz-transform: translate(-5px,-5px);
     -o-transform: translate(-5px, -5px);
     -ms-transform: translate(-5px, -5px);
     transform: translate(-5px, -5px);
 }
+
 #home-posts .post a {
     text-decoration: none;
 }
@@ -525,7 +538,7 @@ pre .language {
     font-size: 14px;
     position: absolute;
     bottom: -5px;
-    right: -5px;
+    right: 0px;
     -webkit-transition: all 0.25s ease-out;
     -moz-transition: all 0.25s ease-out;
     -o-transition: all 0.25s ease-out;
@@ -533,7 +546,11 @@ pre .language {
     box-shadow: 2px 2px 10px 0px rgba(255, 187, 244, 0.478);
 }
 #home-posts .post .go-post:hover {
-    right: -7px;
+    transform: translateX(2%);
+    box-shadow: -2px -2px 10px 0px rgba(154, 187, 247, 0.478);
+}
+#home-posts .post:nth-of-type(even) .go-post:hover {
+    transform: translateX(-2%);
     box-shadow: -2px -2px 10px 0px rgba(154, 187, 247, 0.478);
 }
 #home-posts .page-current {
@@ -561,6 +578,7 @@ pre .language {
     text-align: center;
     font-weight: bold;
 }
+/* 当前页码 */
 #home-posts .page-current .current {
     color: #da0a51;
     display: inline-block;
@@ -791,10 +809,10 @@ pre .language {
 /* 代码段 */
 .content pre {
     /* //背景颜色 */
-    background-color: rgba(240, 240, 240, 0.5);
+    background-color: rgba(236, 236, 236, 0.46);
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
     border: 1px solid #ebeef5;
-    padding: 30px 20px;
+    padding: 24px 20px;
     margin: 25px 0;
     border-radius: 10px;
     overflow: auto;
@@ -1251,13 +1269,13 @@ footer .footer-icon {
         padding: 25px;
     }
     #home-head .home-info .info .wrap h1 {
-        font-size: 52px;
+        font-size: 40px;
         font-weight: bold;
         font-family: "Poppins", "Noto Sans SC", sans-serif;
         margin-bottom: 10px;
     }
     #home-head .home-info .info .wrap h3 {
-        font-size: 24px;
+        font-size: 22px;
         margin: 10px 0;
     }
     #home-head .home-info .info .wrap h5 {
@@ -1285,9 +1303,25 @@ footer .footer-icon {
     }
     #home-posts .post {
         padding: 50px 50px;
-        margin: 25px 0;
+        margin: 50px 0;
+        width: 380px;
+        transform: translateX(320px);
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    /* 偶数的图片与文章信新通奇数的左右位置相反 */
+    #home-posts .post:nth-of-type(even){
+        transform: translateX(0px);
+        border-radius:20px ;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    #home-posts .post:nth-of-type(even) .go-post{
+        right: 376px;
+        border-radius: 0 20px;
     }
     #home-posts .post .excerpt {
+        font-size: 16px;
         padding: 20px 0;
     }
     #home-card {
