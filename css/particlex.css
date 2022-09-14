@@ -198,9 +198,10 @@
         transform: rotate(480deg);
     }
 }
+/* 背景 */
 body {
     width: 100%;
-    background: #f6f8fa;
+    background: linear-gradient(to right, #f6fafb 0  50%,#fff6f6 50% 100%);
     color: #000000d9;
     font-family: "Poppins", "Noto Sans SC", sans-serif;
     font-size: 14px;
@@ -212,6 +213,19 @@ body {
     -moz-backface-visibility: hidden;
     -ms-backface-visibility: hidden;
     backface-visibility: hidden;
+    transition: all linear .3s;
+    /* animation: colorhuerotate ease-in-out 1s infinite; */
+}
+@keyframes colorhuerotate{
+    0%{
+        /* background-image:linear-gradient(to right,#EFEFEF 0 50%, #F2F2F2 50% 100%) ; */
+    }
+    50%{
+       
+    }
+    100%{
+        
+    }
 }
 * {
     margin: 0;

@@ -10,10 +10,17 @@ canvas.setAttribute("style", "width:100%;height:100%;position:fixed;top:0;left:0
 const pointer = document.createElement("span");
 pointer.classList.add("pointer");
 document.body.appendChild(pointer);
-let ctx;
+
+// const V_MAX=8;//最大速度,Ball中的vy，vx不可以超过它
+// const g= -0.9;//重力加速度
+// const BALL_COUNT=5;
+let ctx;//canvas
+//小球数组。
 let balls = [];
+//是否长按
 let longPressed = false;
 let longPress;
+//加速度
 let multiplier = 0;
 let width, height;
 let orgin;
@@ -75,27 +82,31 @@ function updateSize() {
 };
 class Ball {
     constructor(x = orgin.x, y = orgin.y) {
+        // 小球的圆心所在的位置
         this.x = x; //小球当前所在的位置
         this.y = y;
-        //小球角度
+        //移动的方向
         this.angle = Math.PI * 2 * Math.random();
+        //设置加速度
         if (longPressed == true) {
-            this.multiplier = randBetween(10 + multiplier, 12 + multiplier);
+            this.multiplier = randBetween(12 + multiplier, 16 + multiplier);
         } else {
-            this.multiplier = randBetween(5, 10);
+            this.multiplier = randBetween(6,8);
         }
+        // x,y方向的速度
         this.vx = (this.multiplier + Math.random() * 0.5) * Math.cos(this.angle);
         this.vy = (this.multiplier + Math.random() * 0.5) * Math.sin(this.angle);
         //圆的半径
         this.r = randBetween(6, 8) + 3 * Math.random();
         this.color = colors[Math.floor(Math.random() * colors.length)]
     }
+    //更新数据
     update() {
         this.x += this.vx - normal.x;
         this.y += this.vy - normal.y;
         normal.x = -2 / window.innerWidth * Math.sin(this.angle);
         normal.y = -2 / window.innerHeight * Math.cos(this.angle);
-        this.r -= 0.3;
+        this.r -= 0.5;
         this.vx *= 0.9;
         this.vy *= 0.9;
     }
@@ -128,6 +139,7 @@ function loop() {
         // ctx.lineTo(b.x + b.r * Math.random(), b.y + b.r * Math.random());
         // ctx.lineTo(b.x + b.r * Math.random(), b.y - b.r * Math.random());
         ctx.fill();
+        //更新数据（可以理解为使小球向前移动）
         b.update();
     }
     if (longPressed == true) {
@@ -140,16 +152,18 @@ function loop() {
     requestAnimationFrame(loop);
 };
 
-function pushBalls(count = 1, x = orgin.x, y = orgin.y) {
+//将数据放入数组
+function pushBalls(count = BALL_COUNT, x = orgin.x, y = orgin.y) {
     for (let i = 0; i < count; i++) {
         balls.push(new Ball(x, y));
     }
 };
 
+//书籍生成一个不在     min ~  min+max 之间的一个数
 function randBetween(min, max) {
     return Math.floor(Math.random() * max) + min;
 }
-
+//移除小球
 function removeBall() {
     for (let i = 0; i < balls.length; i++) {
         let b = balls[i];
