@@ -201,7 +201,7 @@
 /* 背景 */
 body {
     width: 100%;
-    background: linear-gradient(to right, #f6fafb 0  50%,#fff6f6 50% 100%);
+    background: linear-gradient(to right, #f5f8f9 0  50%,#fff6f6 50% 100%);
     color: #000000d9;
     font-family: "Poppins", "Noto Sans SC", sans-serif;
     font-size: 14px;
