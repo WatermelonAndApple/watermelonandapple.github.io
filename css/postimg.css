@@ -23,13 +23,16 @@
        display: none;
     }
 }
-/* 偶数的图片与文章信新通奇数的左右位置相反 */
-#home-posts .post:nth-of-type(even) .post-img{
-    left: 480px;
-}
-#home-posts .post:nth-of-type(even) .post-img img{
-    border-radius:20px ;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+/* 当屏幕宽度大于900px时 */
+@media(min-width:900px){
+    /* 偶数的图片与文章信新通奇数的左右位置相反 */
+    #home-posts .post:nth-of-type(even) .post-img{
+        left: 480px;
+    }
+    #home-posts .post:nth-of-type(even) .post-img img{
+        border-radius:20px ;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
 }
 

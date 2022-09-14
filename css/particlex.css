@@ -490,22 +490,36 @@ pre .language {
 #home-posts .post:first-child {
     margin-top: 0;
 }
-/* 鼠标移动到主页文章缩略上时 */
-#home-posts .post:hover{
-    box-shadow: 0 0 5px #d9d9d9;
-    -webkit-transform: translate(315px, -5px);
-    -moz-transform: translate(315px,-5px);
-    -o-transform: translate(315px, -5px);
-    -ms-transform: translate(315px, -5px);
-    transform: translate(315px, -5px);
+/* 当屏幕小于900px时 */
+@media (max-width:900px){
+    #home-posts .post:hover{
+        box-shadow: 0 0 5px #d9d9d9;
+        -webkit-transform: translate(-5px, -5px);
+        -moz-transform: translate(-5px, -5px);
+        -o-transform: translate(-5px, -5px);
+        -ms-transform: translate(-5px, -5px);
+        transform: translate(-5px, -5px);
+    }
 }
-#home-posts .post:nth-of-type(even):hover{
-    box-shadow: 0 0 5px #d9d9d9;
-    -webkit-transform: translate(-5px, -5px);
-    -moz-transform: translate(-5px,-5px);
-    -o-transform: translate(-5px, -5px);
-    -ms-transform: translate(-5px, -5px);
-    transform: translate(-5px, -5px);
+/* 当屏幕大于900px时 */
+@media(min-width:900px){
+    /* 鼠标移动到主页文章缩略上时 */
+    #home-posts .post:hover{
+        box-shadow: 0 0 5px #d9d9d9;
+        -webkit-transform: translate(315px, -5px);
+        -moz-transform: translate(315px,-5px);
+        -o-transform: translate(315px, -5px);
+        -ms-transform: translate(315px, -5px);
+        transform: translate(315px, -5px);
+    }
+    #home-posts .post:nth-of-type(even):hover{
+        box-shadow: 0 0 5px #d9d9d9;
+        -webkit-transform: translate(-5px, -5px);
+        -moz-transform: translate(-5px,-5px);
+        -o-transform: translate(-5px, -5px);
+        -ms-transform: translate(-5px, -5px);
+        transform: translate(-5px, -5px);
+    }
 }
 
 #home-posts .post a {
