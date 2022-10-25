@@ -106,7 +106,7 @@ class Ball {
         this.y += this.vy - normal.y;
         normal.x = -2 / window.innerWidth * Math.sin(this.angle);
         normal.y = -2 / window.innerHeight * Math.cos(this.angle);
-        this.r -= 0.5;
+        this.r -= 0.6;
         this.vx *= 0.9;
         this.vy *= 0.9;
     }
