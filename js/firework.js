@@ -14,7 +14,7 @@ document.body.appendChild(pointer);
 // const V_MAX=8;//最大速度,Ball中的vy，vx不可以超过它
 // const g= -0.9;//重力加速度
 // const BALL_COUNT=5;
-let ctx;//canvas
+let ctx; //canvas
 //小球数组。
 let balls = [];
 //是否长按
@@ -91,7 +91,7 @@ class Ball {
         if (longPressed == true) {
             this.multiplier = randBetween(12 + multiplier, 16 + multiplier);
         } else {
-            this.multiplier = randBetween(6,8);
+            this.multiplier = randBetween(6, 8);
         }
         // x,y方向的速度
         this.vx = (this.multiplier + Math.random() * 0.5) * Math.cos(this.angle);
@@ -125,9 +125,9 @@ function loop() {
         // ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2, false);
         // ctx.fill();
         //绘制三角形
-        ctx.moveTo(b.x-b.r,b.y-b.r);
-        ctx.lineTo(b.x+b.r,b.y-b.r);
-        ctx.lineTo(b.x-b.r,b.y+b.r);
+        ctx.moveTo(b.x - b.r, b.y - b.r);
+        ctx.lineTo(b.x + b.r, b.y - b.r);
+        ctx.lineTo(b.x - b.r, b.y + b.r);
         //绘制正方形
         // ctx.moveTo(b.x - b.r, b.y - b.r);
         // ctx.lineTo(b.x + b.r, b.y - b.r);

@@ -1,5 +1,7 @@
 hljs.highlightAll();
-hljs.configure({ ignoreUnescapedHTML: true });
+hljs.configure({
+    ignoreUnescapedHTML: true
+});
 var codes = document.getElementsByTagName("pre");
 for (var i = 0; i < codes.length; i++) {
     var lang = codes[i].firstChild.className.split(/\s+/).filter((x) => {
