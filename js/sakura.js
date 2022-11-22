@@ -11,7 +11,7 @@ sakura.height = window.innerHeight;
 const sctx = sakura.getContext('2d');
 
 // 定义花瓣的数量
-const SAKURA_SUM = 10;
+const SAKURA_SUM = 15;
 // 花瓣数组
 const sakuraArray = [];
 
@@ -28,7 +28,7 @@ class Sakura {
         this.width = Math.random() * 15 + 25;
         this.height = Math.random() * 12 + 20;
         // 随机透明度
-        this.opacity = this.w / 50;
+        this.opacity = this.width / 50;
         // 设置一个随机数，后面实现旋转角度效果时会用到
         this.rotate = Math.random();
         // 速度初始化
@@ -81,7 +81,8 @@ function render() {
 
 // 加载花瓣图片
 const sakuraImg = new Image();
-sakuraImg.src = './images/sakura.png';
+sakuraImg.src = '../images/sakura.png';
+console.log(sakuraImg.src)
 // 等花瓣图片加载完毕，将数目为SAKURA_SUM的花瓣实例保存到数组中
 sakuraImg.addEventListener('load', () => {
     for (let i = 0; i < SAKURA_SUM; i++) {
