@@ -1,0 +1,569 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>
+            Git的使用 | 瓜田の鼹鼠的个人博客
+        </title>
+        <meta name="author" content="瓜田の鼹鼠">
+        <meta name="description" content="">
+        <meta name="keywords" content="瓜田里的鼹鼠,瓜田の鼹鼠的blog,鼹鼠的blog">
+        <link rel="icon" href="https://images2.alphacoders.com/661/thumbbig-661559.webp">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+                <link rel="stylesheet" href="/css/fonts.min.css">
+                <link rel="stylesheet" href="/css/particlex.css">
+                <!-- 主页文章左边图片的css文件 -->
+                <link rel="stylesheet" href="/css/postimg.css">
+                
+                    <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"></head>
+
+    <body>
+        <!-- 加载动画 -->
+        <div id="loading"
+            style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out">
+            <div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center">
+                <div id="loadcontent"
+                    style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center">
+                    <div>
+                        <h2>LOADING...</h2>
+                        <p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p>
+                        <div><img alt="loading" src="/loading.gif"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">瓜田の鼹鼠</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;主页</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;关于我</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;文章</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;分类</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;标签</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;瓜田の鼹鼠</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">关于我</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">文章</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+<div class="article">
+    <div>
+        <h1>Git的使用 </h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
+            </span>
+            2022/10/31
+        </span>
+        
+        <span class="category">
+            <a href="/categories/git/">
+                <span class="icon">
+                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                </span>
+                git
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/git/" style="color: #ff7d73">
+                    git
+                </a>
+            </span>
+            
+        </span>
+        
+    </div>
+    <div class="content" v-pre>
+        <h1 id="Git-和-Github-基本使用"><a href="#Git-和-Github-基本使用" class="headerlink" title="Git 和 Github 基本使用"></a>Git 和 Github 基本使用</h1><blockquote>
+<p>Git 是一个免费的、开源的分布式版本管理系统。GIt 是Linus Torvalds 为了更好的帮助管理Linux内核开发而开发的版本控制软件。</p>
+</blockquote>
+<blockquote>
+<p>git官网：[GIT官网](<a target="_blank" rel="noopener" href="https://git-scm.com/">Git (git-scm.com)</a>)</p>
+</blockquote>
+<h4 id="1-Git常用命令"><a href="#1-Git常用命令" class="headerlink" title="1.Git常用命令"></a>1.Git常用命令</h4><blockquote>
+<p>以下的操作全在git bash中完成。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">git config –global user.name  用户名</td>
+<td align="left">设置用户签名</td>
+</tr>
+<tr>
+<td align="left">git config –global user.email 邮箱</td>
+<td align="left">设置用户签名</td>
+</tr>
+<tr>
+<td align="left">git init</td>
+<td align="left">初始化本地库</td>
+</tr>
+<tr>
+<td align="left">git status</td>
+<td align="left">查看本地库状态</td>
+</tr>
+<tr>
+<td align="left">git add 文件名</td>
+<td align="left">添加到暂存区</td>
+</tr>
+<tr>
+<td align="left">git  commit  -m  “日志信息”  文件名</td>
+<td align="left">提交到本地库</td>
+</tr>
+<tr>
+<td align="left">git reflog</td>
+<td align="left">查看历史记录</td>
+</tr>
+<tr>
+<td align="left">git reset –hard 版本号</td>
+<td align="left">版本穿梭</td>
+</tr>
+</tbody></table>
+<h5 id="1-1-设置用户签名"><a href="#1-1-设置用户签名" class="headerlink" title="1.1 设置用户签名"></a>1.1 设置用户签名</h5><p>git设置用户签名的命令是：</p>
+<pre><code>git  config --global user.name 用户名
+git config  --global user.email 邮箱
+</code></pre>
+<blockquote>
+<p>当首次安装号git后需要设置用户签名，用户签名设置后才可以进行提交操作，否则无法进行提交，用户签名可以在提交代码是用于确认是哪个<em><strong>用户</strong></em>（你电脑上的本地的git客户端）执行的此次操作。</p>
+</blockquote>
+<img src="/git/git/git-study/image-20221024225108555.png" class title="image-20221024225108555">
+
+<p>设置好用户签名后可以在本地用户的目录下找到<code>.gitconfig</code>文件，打开可以看到刚刚设置的签名</p>
+<img src="/git/git/git-study/image-20221024225433100.png" class title="image-20221024225433100">
+
+<h5 id="1-2-初始化本地库"><a href="#1-2-初始化本地库" class="headerlink" title="1.2 初始化本地库"></a>1.2 初始化本地库</h5><p>要想使用git来管理版本必须先要初始化本地库。git初始化本地库的命令是：</p>
+<pre><code>git init
+</code></pre>
+<p>初始化后可以在git管理的文件加下看到<code>.git</code>文件夹</p>
+<h5 id="1-3-查看本地库状态"><a href="#1-3-查看本地库状态" class="headerlink" title="1.3 查看本地库状态"></a>1.3 查看本地库状态</h5><p>查看本地库状态的命令:</p>
+<pre><code>git status
+</code></pre>
+<p>在git管理的目录下新建hello.txt文件，并写入一些数据，使用·<code>git status</code>命令查看如下：</p>
+<img src="/git/git/git-study/image-20221024232211384.png" class title="image-20221024232211384">
+
+<blockquote>
+<p>通过如上命令可以知道，现在git在master主分支上，还没有进行commit，所以git无法追踪hello.txt文件，也无法对hello.txt文件进行版本管理。</p>
+</blockquote>
+<h5 id="1-4-添加文件到暂存区"><a href="#1-4-添加文件到暂存区" class="headerlink" title="1.4  添加文件到暂存区"></a>1.4  添加文件到暂存区</h5><p>添加文件到暂存区的命令：</p>
+<pre><code>git add 文件名
+</code></pre>
+<p>将上一步的文件添加到暂存区后再次查看本地库状态如下：</p>
+<img src="/git/git/git-study/image-20221024233018510.png" class title="image-20221024233018510">
+
+<blockquote>
+<p>可以看到文件颜色变为了绿色，说明现在该文件可以被追踪到，并可以进行提交操作了。</p>
+</blockquote>
+<h5 id="1-5-删除暂存区的文件"><a href="#1-5-删除暂存区的文件" class="headerlink" title="1.5 删除暂存区的文件"></a>1.5 删除暂存区的文件</h5><p>删除暂存区的文件的命令是：</p>
+<pre><code>git  rm --cached 文件名
+</code></pre>
+<p>从暂存区移除文件后可以看到文件又变回了之前无法追踪的情况了。</p>
+<img src="/git/git/git-study/image-20221025100548561.png" class title="image-20221025100548561">
+
+<h5 id="1-6-提交文件到本地库"><a href="#1-6-提交文件到本地库" class="headerlink" title="1.6 提交文件到本地库"></a>1.6 提交文件到本地库</h5><p>提交文件到本地库的命令：</p>
+<pre><code>git commit -m &quot;提交信息&quot; 文件名
+</code></pre>
+<p>文件被提交到本地库后就会形成该库的历史版本信息。</p>
+<img src="/git/git/git-study/image-20221025101345323.png" class title="image-20221025101345323">
+
+<h5 id="1-7-查看历史记录"><a href="#1-7-查看历史记录" class="headerlink" title="1.7  查看历史记录"></a>1.7  查看历史记录</h5><pre><code>git reflog                    #查看缩略的历史记录
+git log                       #查看详细的历史记录
+</code></pre>
+<img src="/git/git/git-study/image-20221025101622818.png" class title="image-20221025101622818">
+
+<p>如上图所示：<code>git reflog</code>命令是查看缩略的历史记录，<code>git log</code>命令是产看详细的历史记录。</p>
+<blockquote>
+<p>最前面的那一串是版本号，最后面的是我们提交时所描述的该次提交的信息，查看详细的历史记录可以看到提交者的用户签名。</p>
+</blockquote>
+<h4 id="2-Git的使用"><a href="#2-Git的使用" class="headerlink" title="2.Git的使用"></a>2.Git的使用</h4><h5 id="2-1-版本穿梭"><a href="#2-1-版本穿梭" class="headerlink" title="2.1 版本穿梭"></a>2.1 版本穿梭</h5><p>版本穿梭的命令：</p>
+<pre><code>git reset --hard 版本号
+</code></pre>
+<blockquote>
+<p>git的版本穿梭可以让我们切换到任意的历史版本。</p>
+</blockquote>
+<p>使用<code>vim hello.txt</code>命令修改hello.txt文件，在其后添加“first update hello.txt”后，再次使用<code>git status</code>命令查看git状态信息。可以看到git提示我们文件已经修改（modified）了。且文件名是红色的，红色代表该文件还没有添加到暂存区。</p>
+<img src="/git/git/git-study/image-20221025103104443.png" class title="image-20221025103104443">
+
+<p>使用<code>git add </code>命令将修改后的文件添加到暂存区后，再次查看git信息。可以看到文件已经被放入了暂存区。</p>
+<img src="/git/git/git-study/image-20221025103546276.png" class title="image-20221025103546276">
+
+<p>然后我们提交该文件到git本地库，使用<code>git reflog</code>查看git 的历史记录。</p>
+<img src="/git/git/git-study/image-20221025104448209.png" class title="image-20221025104448209">
+
+<p>我们可以看到此时，历史记录中有了两份记录，一份是我们第一次进行提交时的，另一个是我们修改文件后进行提交的。且此时HEAD指向了第二次提交的版本。我们使用<code>cat </code>命令查看hello.txt文件的内容。</p>
+<img src="/git/git/git-study/image-20221025105623100.png" class title="image-20221025105623100">
+
+<p>现在是第二个版本，如果我们想回到第一个版本，可以使用<code>git reset --hard 版本号</code>命令。</p>
+<img src="/git/git/git-study/image-20221025110503585.png" class title="image-20221025110503585">
+
+<p>使用<code>cat </code>命令再次查看hello.txt文件的内容。我们发现该文件变回了第一个版本。</p>
+<img src="/git/git/git-study/image-20221025110534884.png" class title="image-20221025110534884">
+
+<p>再将其变回第二个版本。</p>
+<img src="/git/git/git-study/image-20221025110714608.png" class title="image-20221025110714608">
+
+<blockquote>
+<p>注意：版本穿梭会影响工作区，需要谨慎使用。</p>
+</blockquote>
+<p>git的版本穿梭底层是使用指针，head指针指向当前的分支，当前的分支指针指向各个版本。</p>
+<img src="/git/git/git-study/image-20221025112617408.png" class title="image-20221025112617408">
+
+<h5 id="2-2-Git分支（重要）"><a href="#2-2-Git分支（重要）" class="headerlink" title="2.2 Git分支（重要）"></a>2.2 Git分支（重要）</h5><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git branch 分支名</td>
+<td>创建分支</td>
+</tr>
+<tr>
+<td>git branch -v</td>
+<td>查看分支</td>
+</tr>
+<tr>
+<td>git checkout 分支名</td>
+<td>切换分支</td>
+</tr>
+<tr>
+<td>git merge 分支名</td>
+<td>把指定的分支合并到当前分支上</td>
+</tr>
+<tr>
+<td>git branch -m 旧分支名  新分支名</td>
+<td>重新命名分支</td>
+</tr>
+</tbody></table>
+<ul>
+<li>查看分支：<code>git branch -v</code>：可以查看当前已经创建的分支</li>
+</ul>
+<img src="/git/git/git-study/image-20221025113315722.png" class title="image-20221025113315722">
+
+<ul>
+<li>创建分支：<code>git branch 分支名</code>：创建一个新的分支</li>
+</ul>
+<img src="/git/git/git-study/image-20221025113533994.png" class title="image-20221025113533994">
+
+<ul>
+<li>切换分支：<code>git checkout 分支名</code>：从当前分支切换到另一个分支</li>
+</ul>
+<img src="/git/git/git-study/image-20221025114212049.png" class title="image-20221025114212049">
+
+<ul>
+<li>分支改名：<code>git branch -m 旧分支名  新分支名</code>：重命名分支</li>
+</ul>
+<img src="/git/git/git-study/image-20221025215503608.png" class title="image-20221025215503608">
+
+<ul>
+<li>合并分支：<code>git merge 分支名</code>：把指定的分支合并到当前分支上。</li>
+</ul>
+<p>新建分支fix-hot，并修改fix-hot上的hello.txt文件，添加到暂存区并提交。查看是否提交成功。</p>
+<img src="/git/git/git-study/image-20221025115640962.png" class title="image-20221025115640962">
+
+<p>提交成功后切换回master分支，并将fix-hot分支修改的内容合并到master上。</p>
+<img src="/git/git/git-study/image-20221025115935171.png" class title="image-20221025115935171">
+
+<p>最后查看master分支上的hello.txt结果是不是同fix-hot上的一样。显然，结果是一样的，说明fix-hot分支被合并到了master分支上。</p>
+<img src="/git/git/git-study/image-20221025120047740.png" class title="image-20221025120047740">
+
+<p><strong>分支合并冲突</strong>：合并分支时，如果两个分支在同一个文件的同一个位置有两套完全不同的修改。git无法替我们决定要使用哪一个。此时必须人为决定选择哪一个作为新的内容。</p>
+<p>例如：分别在master分支与fix-hot分支上修改文件的第一行，在其后面加一些不一样的词。提交后再次合并分支。出现如下错误，说明分支合并产生了冲突，git不知道到低我们要fix-hot分支的内容还是master分支分内容。</p>
+<img src="/git/git/git-study/image-20221025121559813.png" class title="image-20221025121559813">
+
+<img src="/git/git/git-study/image-20221025121832750.png" class title="image-20221025121832750">
+
+<p>解决办法：手动打开文件，输入命令<code>vim hello.txt</code>。看到信息如下：</p>
+<img src="/git/git/git-study/image-20221025121946836.png" class title="image-20221025121946836">
+
+<p>根据你要的结果人为修改，比如修改成如下结果。</p>
+<img src="/git/git/git-study/image-20221025122157120.png" class title="image-20221025122157120">
+
+<p>保存后再次添加到暂存区并提交（这次提交不要带文件名）。</p>
+<img src="/git/git/git-study/image-20221025122549328.png" class title="image-20221025122549328">
+
+<p>如果带文件名则有如下错误提示：</p>
+<img src="/git/git/git-study/image-20221025122620445.png" class title="image-20221025122620445">
+
+<p>解决合并冲突后，查看结果是否正确。</p>
+<img src="/git/git/git-study/image-20221025122820519.png" class title="image-20221025122820519">
+
+<h4 id="3-Github操作"><a href="#3-Github操作" class="headerlink" title="3.Github操作"></a>3.Github操作</h4><blockquote>
+<p>github官网：<a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a></p>
+</blockquote>
+<h5 id="3-1github创建远程仓库"><a href="#3-1github创建远程仓库" class="headerlink" title="3.1github创建远程仓库"></a>3.1github创建远程仓库</h5><p>点击new repository新建一个远程代码仓库</p>
+<img src="/git/git/git-study/image-20221025213323074.png" class title="image-20221025213323074">
+
+<h5 id="3-2创建远程仓库别名"><a href="#3-2创建远程仓库别名" class="headerlink" title="3.2创建远程仓库别名"></a>3.2创建远程仓库别名</h5><pre><code>git remote -v  						#查看当前所有远程仓库的地址别名
+git remote add 别名  地址            #给地址取一个别名
+</code></pre>
+<p>给刚刚我们创建好的远程仓库取别名并查看。</p>
+<img src="/git/git/git-study/image-20221025214300793.png" class title="image-20221025214300793">
+
+<h5 id="3-3推送本地仓库到远程仓库"><a href="#3-3推送本地仓库到远程仓库" class="headerlink" title="3.3推送本地仓库到远程仓库"></a>3.3推送本地仓库到远程仓库</h5><pre><code>git push 别名 分支名
+</code></pre>
+<blockquote>
+<p>在推送时，最好确保你推送的代码是稳定、无bug版的。</p>
+</blockquote>
+<p>推送完成后，就可以在远程仓库上看到我们刚刚推送的代码了。</p>
+<img src="/git/git/git-study/image-20221025222357113.png" class title="image-20221025222357113">
+
+<h5 id="3-4拉取远程仓库到本地库"><a href="#3-4拉取远程仓库到本地库" class="headerlink" title="3.4拉取远程仓库到本地库"></a>3.4拉取远程仓库到本地库</h5><pre><code>git pull 别名 分支名
+</code></pre>
+<h5 id="3-5克隆远程仓库代码"><a href="#3-5克隆远程仓库代码" class="headerlink" title="3.5克隆远程仓库代码"></a>3.5克隆远程仓库代码</h5><pre><code>git clone 远程地址
+</code></pre>
+<h5 id="3-6配置ssh免密登录"><a href="#3-6配置ssh免密登录" class="headerlink" title="3.6配置ssh免密登录"></a>3.6配置ssh免密登录</h5><p>生成ssh密钥的命令：</p>
+<pre><code>ssh-keygen -t rsa -C &quot;你的github邮箱&quot;
+</code></pre>
+<p>输入命令后按3下回车键。</p>
+<img src="/git/git/git-study/image-20221025224711267.png" class title="image-20221025224711267">
+
+<p>生成密钥后可以在看到.ssh文件夹</p>
+<img src="/git/git/git-study/image-20221025224854546.png" class title="image-20221025224854546">
+
+<p>复制公钥到github账号setting下的SSH  and  GPG keys下SSH，新建SSH将刚刚复制的公钥粘贴上去。此时ssh免密登录就配置好了。</p>
+<h4 id="4-IDEA中使用git"><a href="#4-IDEA中使用git" class="headerlink" title="4.IDEA中使用git"></a>4.IDEA中使用git</h4><h5 id="4-1-配置git的忽略文件"><a href="#4-1-配置git的忽略文件" class="headerlink" title="4.1 配置git的忽略文件"></a>4.1 配置git的忽略文件</h5><blockquote>
+<p>eclipse和IDEA中都有一些软件的配置文件，提交git时需要忽略这些文件，这些文件与我们所写的项目代码无关。将它们忽略可以屏蔽掉IDE工具之间的差异。</p>
+</blockquote>
+<p>创建忽略文件<code>xxxx.ignore</code>(建议取名为git.ignore)，将该文件放在系统用户目录下。输入如下内容。</p>
+<pre><code># compiled class file
+*.class
+
+#log file 
+*.log
+
+#blueJ files
+*.ctxt
+
+.mtj.tmp/
+
+#packageFiles
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+
+hs_err_pid*
+
+.classpath
+.project
+.settings
+target
+.idea
+*.iml
+</code></pre>
+<p>然后在.gitconfig文件中配置git.ignore文件位置。</p>
+<pre><code>[core]
+    excludesfile = C:/Users/luo/git.ignore
+</code></pre>
+<h5 id="4-2-IDEA使用git"><a href="#4-2-IDEA使用git" class="headerlink" title="4.2 IDEA使用git"></a>4.2 IDEA使用git</h5><h6 id="4-2-1-IDEA定位git"><a href="#4-2-1-IDEA定位git" class="headerlink" title="4.2,1 IDEA定位git"></a>4.2,1 IDEA定位git</h6><p>打开IDEA，然后点击File下的settings中的version control下的git。</p>
+<img src="/git/git/git-study/image-20221027201507830.png" class title="image-20221027201507830">
+
+<p>找到git.exe所在的位置。此时，我们可以用IDEA来使用git了。</p>
+<h6 id="4-2-2-IDEA中git的操作"><a href="#4-2-2-IDEA中git的操作" class="headerlink" title="4.2.2 IDEA中git的操作"></a>4.2.2 IDEA中git的操作</h6><ul>
+<li>初始化本地库：点击上方菜单VCS点击create git repository。</li>
+<li>添加到暂存区：右击文件选择：git   –&gt;   add  </li>
+<li>提交到本地库：右击文件选择：git –&gt; commit directory  。提交后可以看到暂存区中的文件</li>
+</ul>
+<img src="/git/git/git-study/image-20221027204601588.png" class title="image-20221027204601588">
+
+<ul>
+<li>切换代码版本：坐下角git点击某一版本点击checkout revision</li>
+<li>创建分支：右下角new branch</li>
+<li>切换分支：右下角选择分支名,来切换分支</li>
+<li>合并分支：右下角merge  … inot …</li>
+</ul>
+<p><strong>代码冲突</strong>：修改main和hot-fix中的代码，然后让hot-fix分支合并到main。产生如下冲突：</p>
+<img src="/git/git/git-study/image-20221027211600127.png" class title="image-20221027211600127">
+
+<p>解决办法：待机merge后，可以看到左边为main分支代码，而右边是hot-fix分支的代码。中间为正常没有冲突的代码。此时你可以，点击x号不要此代码也可以点击指向符号保留代码。手动解决冲突后点击apply。冲突就解决了。</p>
+<img src="/git/git/git-study/image-20221027211734283.png" class title="image-20221027211734283">
+
+<p>解决冲突后：</p>
+<img src="/git/git/git-study/image-20221027212210744.png" class title="image-20221027212210744">
+
+<h5 id="4-3-IDEA使用Github"><a href="#4-3-IDEA使用Github" class="headerlink" title="4.3 IDEA使用Github"></a>4.3 IDEA使用Github</h5><blockquote>
+<p>找到settings中的github(如果没有则使用点击settings中的plugins安装github插件)。</p>
+</blockquote>
+<h6 id="4-3-1-设置github账号"><a href="#4-3-1-设置github账号" class="headerlink" title="4.3.1 设置github账号"></a>4.3.1 设置github账号</h6><p>使用token口令登录github账号。token口令生成如下：</p>
+<ol>
+<li>点击github账号的settings</li>
+<li>往下翻找，找到Developer  Settings</li>
+</ol>
+<img src="/git/git/git-study/image-20221027213450266.png" class title="image-20221027213450266">
+
+<ol start="3">
+<li>找到Personal  access  tokens下的tokens点击generate new token生成token口令。</li>
+</ol>
+<img src="/git/git/git-study/image-20221027214004353.png" class title="image-20221027214004353">
+
+<blockquote>
+<p>注意：token口令生成一次后就不可以在查看了，只能重新生成新的token。</p>
+</blockquote>
+<p>生成token后，利用token在IDEA设置gihub账号。</p>
+<img src="/git/git/git-study/image-20221027214848951.png" class title="image-20221027214848951">
+
+<ul>
+<li>IDEA推送项目到github：右击Git –&gt; github –&gt; share project  on github</li>
+<li>push到github：右击Git –&gt; push</li>
+<li>pull代码：右击Git –&gt; pull</li>
+</ul>
+<p>克隆项目到本地：点击get from vcs，填入克隆项目的URL</p>
+<img src="/git/git/git-study/image-20221027221444181.png" class title="image-20221027221444181">
+
+
+
+
+    </div>
+    <!-- 评论 -->
+    
+</div>
+                             
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2022 瓜田の鼹鼠
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @瓜田の鼹鼠
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        <!-- 引入接受名人名言的js文件 -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="/js/mingrenminyan.js"></script>
+        <!-- 引入鼠标点击特效的js文件 -->
+        <script src="/js/firework.js"></script>
+        <!-- 引入樱花背景飘落特效 -->
+        <canvas id="sakura"></canvas>
+        <script src="/js/sakura.js" type="module"></script>
+        
+
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"debug":false,"model":{"scale":1.36,"hHeadPos":0.523,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false}});</script></body>
+
+    </html>
