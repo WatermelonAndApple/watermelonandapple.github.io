@@ -139,75 +139,89 @@
                     </div>
                     <div id="main">
                         
-<div class="article">
-    <div>
-        <h1>Vue  +  ElementUI组件库 </h1>
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#calendar-solid"></use></svg>
-            </span>
-            2022/9/10
-        </span>
-        
-        <span class="category">
-            <a href="/categories/vue/">
+    <div class="article">
+        <div>
+            <h1>
+                Vue  +  ElementUI组件库
+            </h1>
+        </div>
+        <div class="info">
+            <span class="date">
                 <span class="icon">
-                    <svg class="fa-icon"><use xlink:href="#bookmark-solid"></use></svg>
+                    <svg class="fa-icon">
+                        <use xlink:href="#calendar-solid"></use>
+                    </svg>
                 </span>
-                vue
-            </a>
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <svg class="fa-icon"><use xlink:href="#tags-solid"></use></svg>
+                2022/9/10
             </span>
             
-            <span class="tag">
+                <span class="category">
+                    <span class="icon">
+                        <svg class="fa-icon">
+                            <use xlink:href="#bookmark-solid"></use>
+                        </svg>
+                    </span>
+                    
+                        <a href="/categories/vue/" style="color: #38f;">
+                            vue
+                        </a>
+                        
+                        <a href="/categories/vue/前端/" style="color: #38f;">
+                            前端
+                        </a>
+                        
+                </span>
                 
-                <a href="/tags/vue/" style="color: #00bcd4">
-                    vue
-                </a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/前端/" style="color: #03a9f4">
-                    前端
-                </a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/ElementUI/" style="color: #03a9f4">
-                    ElementUI
-                </a>
-            </span>
-            
-        </span>
-        
-    </div>
-    <div class="content" v-pre>
-        <blockquote>
+                    
+                        <span class="tags">
+                            <span class="icon">
+                                <svg class="fa-icon">
+                                    <use xlink:href="#tags-solid"></use>
+                                </svg>
+                            </span>
+                            
+                                <span class="tag">
+                                    
+                                        <a href="/tags/vue/" style="color: #ffa2c4">
+                                            vue
+                                        </a>
+                                </span>
+                                
+                                <span class="tag">
+                                    
+                                        <a href="/tags/前端/" style="color: #ffa2c4">
+                                            前端
+                                        </a>
+                                </span>
+                                
+                                <span class="tag">
+                                    
+                                        <a href="/tags/ElementUI/" style="color: #03a9f4">
+                                            ElementUI
+                                        </a>
+                                </span>
+                                
+                        </span>
+                        
+        </div>
+        <div class="content" v-pre>
+            <blockquote>
 <p>Vue官网:<a target="_blank" rel="noopener" href="https://cn.vuejs.org/">https://cn.vuejs.org/</a></p>
 <p>ElementUi官网：<a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN">https://element.eleme.cn/#/zh-CN</a></p>
 </blockquote>
-<h4 id="1-ElmentUI的安装"><a href="#1-ElmentUI的安装" class="headerlink" title="1.ElmentUI的安装"></a>1.ElmentUI的安装</h4><h5 id="npm安装（推荐）"><a href="#npm安装（推荐）" class="headerlink" title="npm安装（推荐）"></a>npm安装（推荐）</h5><p>使用npm的方式安装能够更好的和webpack打包工具配合使用。</p>
-<pre><code>npm i element-ui -s                                 
+<h3 id="1-ElmentUI的安装"><a href="#1-ElmentUI的安装" class="headerlink" title="1.ElmentUI的安装"></a>1.ElmentUI的安装</h3><h4 id="npm安装（推荐）"><a href="#npm安装（推荐）" class="headerlink" title="npm安装（推荐）"></a>npm安装（推荐）</h4><p>使用npm的方式安装能够更好的和webpack打包工具配合使用。</p>
+<pre><code class="shell">npm i element-ui -s                                 
 </code></pre>
-<h5 id="引入外部文件的形式"><a href="#引入外部文件的形式" class="headerlink" title="引入外部文件的形式"></a>引入外部文件的形式</h5><p>通过cdn在页面上引入css文件和js文件</p>
+<h4 id="引入外部文件的形式"><a href="#引入外部文件的形式" class="headerlink" title="引入外部文件的形式"></a>引入外部文件的形式</h4><p>通过cdn在页面上引入css文件和js文件</p>
 <pre><code class="html">&lt;!-- 引入样式 --&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/element-ui/lib/theme-chalk/index.css&quot;&gt;
 &lt;!-- 引入组件库 --&gt;
 &lt;script src=&quot;https://unpkg.com/element-ui/lib/index.js&quot;&gt;&lt;/script&gt;
 </code></pre>
-<h4 id="2-快速上手"><a href="#2-快速上手" class="headerlink" title="2.快速上手"></a>2.快速上手</h4><blockquote>
+<h3 id="2-快速上手"><a href="#2-快速上手" class="headerlink" title="2.快速上手"></a>2.快速上手</h3><blockquote>
 <p>安装后，需要将ElementUI引入，可以根据需要引入部分组件,也可以完整引入。</p>
 </blockquote>
-<h5 id="完整引入"><a href="#完整引入" class="headerlink" title="完整引入"></a>完整引入</h5><p>在main.js文件中写入如下内容：</p>
+<h4 id="完整引入"><a href="#完整引入" class="headerlink" title="完整引入"></a>完整引入</h4><p>在main.js文件中写入如下内容：</p>
 <pre><code class="js">import Vue from &#39;vue&#39;;              //引入Vue
 //引入ElementUI组件库
 import ElementUI from &#39;element-ui&#39;;       
@@ -222,12 +236,12 @@ new Vue(&#123;
   render: h =&gt; h(App)
 &#125;);
 </code></pre>
-<h5 id="按需引入"><a href="#按需引入" class="headerlink" title="按需引入"></a>按需引入</h5><p>借助 <a target="_blank" rel="noopener" href="https://github.com/QingWei-Li/babel-plugin-component">babel-plugin-component</a>，我们可以只引入需要的组件，以达到减小项目体积的目的。</p>
+<h4 id="按需引入"><a href="#按需引入" class="headerlink" title="按需引入"></a>按需引入</h4><p>借助 <a target="_blank" rel="noopener" href="https://github.com/QingWei-Li/babel-plugin-component">babel-plugin-component</a>，我们可以只引入需要的组件，以达到减小项目体积的目的。</p>
 <p>首先，安装 babel-plugin-component：</p>
-<pre><code>npm install babel-plugin-component -D
+<pre><code class="shell">npm install babel-plugin-component -D
 </code></pre>
 <p>然后，将 .babelrc 修改(新版的vue生成的文件为babel.config.js)为：</p>
-<pre><code>&#123;
+<pre><code class="shell">&#123;
   &quot;presets&quot;: [[&quot;@babel/preset-env&quot;, &#123; &quot;modules&quot;: false &#125;]],
   &quot;plugins&quot;: [
     [
@@ -260,7 +274,7 @@ new Vue(&#123;
 <blockquote>
 <p>可以在components.json中查看组件库有哪些组件。</p>
 </blockquote>
-<h4 id="3-全局配置"><a href="#3-全局配置" class="headerlink" title="3.全局配置"></a>3.全局配置</h4><p>在引入 Element 时，可以传入一个全局配置对象。该对象目前支持 <code>size</code> 与 <code>zIndex</code> 字段。<code>size</code> 用于改变组件的默认尺寸，<code>zIndex</code> 设置弹框的初始 z-index（默认值：2000）。按照引入 Element 的方式，具体操作如下：</p>
+<h3 id="3-全局配置"><a href="#3-全局配置" class="headerlink" title="3.全局配置"></a>3.全局配置</h3><p>在引入 Element 时，可以传入一个全局配置对象。该对象目前支持 <code>size</code> 与 <code>zIndex</code> 字段。<code>size</code> 用于改变组件的默认尺寸，<code>zIndex</code> 设置弹框的初始 z-index（默认值：2000）。按照引入 Element 的方式，具体操作如下：</p>
 <p>完整引入 Element：</p>
 <pre><code class="js">import Vue from &#39;vue&#39;;
 import Element from &#39;element-ui&#39;;
@@ -278,10 +292,19 @@ Vue.use(Button);
 <p>至此，Vue + ElementUI的开发环境就已经搭建好了。各个组件的使用方法请参考官方文档。</p>
 </blockquote>
 
+        </div>
+        <!-- 文章导航栏,在文章的右侧 -->
+        <div id="content-left-nav">
+            <!-- //回到页面顶部 -->
+            <span id="go-to-top">
+                <a href="#main"><i class="fa-solid fa-caret-up"></i></a>
+            </span>
+        </div>
+        <!-- 引入文章标题导航栏js -->
+        <script src="/js/page-left-nav.js"></script>
+        <!-- 评论 -->
+        
     </div>
-    <!-- 评论 -->
-    
-</div>
                              
 <footer id="footer">
     <div class="footer-wrap">
