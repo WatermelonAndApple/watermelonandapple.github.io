@@ -182,21 +182,21 @@
                             
                                 <span class="tag">
                                     
-                                        <a href="/tags/vue/" style="color: #ffa2c4">
+                                        <a href="/tags/vue/" style="color: #ff7d73">
                                             vue
                                         </a>
                                 </span>
                                 
                                 <span class="tag">
                                     
-                                        <a href="/tags/前端/" style="color: #ffa2c4">
+                                        <a href="/tags/前端/" style="color: #00a596">
                                             前端
                                         </a>
                                 </span>
                                 
                                 <span class="tag">
                                     
-                                        <a href="/tags/ElementUI/" style="color: #03a9f4">
+                                        <a href="/tags/ElementUI/" style="color: #ffa2c4">
                                             ElementUI
                                         </a>
                                 </span>
@@ -209,19 +209,19 @@
 <p>Vue官网:<a target="_blank" rel="noopener" href="https://cn.vuejs.org/">https://cn.vuejs.org/</a></p>
 <p>ElementUi官网：<a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN">https://element.eleme.cn/#/zh-CN</a></p>
 </blockquote>
-<h3 id="1-ElmentUI的安装"><a href="#1-ElmentUI的安装" class="headerlink" title="1.ElmentUI的安装"></a>1.ElmentUI的安装</h3><h4 id="npm安装（推荐）"><a href="#npm安装（推荐）" class="headerlink" title="npm安装（推荐）"></a>npm安装（推荐）</h4><p>使用npm的方式安装能够更好的和webpack打包工具配合使用。</p>
+<h1 id="1-ElmentUI的安装"><a href="#1-ElmentUI的安装" class="headerlink" title="1.ElmentUI的安装"></a>1.ElmentUI的安装</h1><h2 id="npm安装（推荐）"><a href="#npm安装（推荐）" class="headerlink" title="npm安装（推荐）"></a>npm安装（推荐）</h2><p>使用npm的方式安装能够更好的和webpack打包工具配合使用。</p>
 <pre><code class="shell">npm i element-ui -s                                 
 </code></pre>
-<h4 id="引入外部文件的形式"><a href="#引入外部文件的形式" class="headerlink" title="引入外部文件的形式"></a>引入外部文件的形式</h4><p>通过cdn在页面上引入css文件和js文件</p>
+<h2 id="引入外部文件的形式"><a href="#引入外部文件的形式" class="headerlink" title="引入外部文件的形式"></a>引入外部文件的形式</h2><p>通过cdn在页面上引入css文件和js文件</p>
 <pre><code class="html">&lt;!-- 引入样式 --&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/element-ui/lib/theme-chalk/index.css&quot;&gt;
 &lt;!-- 引入组件库 --&gt;
 &lt;script src=&quot;https://unpkg.com/element-ui/lib/index.js&quot;&gt;&lt;/script&gt;
 </code></pre>
-<h3 id="2-快速上手"><a href="#2-快速上手" class="headerlink" title="2.快速上手"></a>2.快速上手</h3><blockquote>
+<h1 id="2-快速上手"><a href="#2-快速上手" class="headerlink" title="2.快速上手"></a>2.快速上手</h1><blockquote>
 <p>安装后，需要将ElementUI引入，可以根据需要引入部分组件,也可以完整引入。</p>
 </blockquote>
-<h4 id="完整引入"><a href="#完整引入" class="headerlink" title="完整引入"></a>完整引入</h4><p>在main.js文件中写入如下内容：</p>
+<h2 id="完整引入"><a href="#完整引入" class="headerlink" title="完整引入"></a>完整引入</h2><p>在main.js文件中写入如下内容：</p>
 <pre><code class="js">import Vue from &#39;vue&#39;;              //引入Vue
 //引入ElementUI组件库
 import ElementUI from &#39;element-ui&#39;;       
@@ -236,7 +236,7 @@ new Vue(&#123;
   render: h =&gt; h(App)
 &#125;);
 </code></pre>
-<h4 id="按需引入"><a href="#按需引入" class="headerlink" title="按需引入"></a>按需引入</h4><p>借助 <a target="_blank" rel="noopener" href="https://github.com/QingWei-Li/babel-plugin-component">babel-plugin-component</a>，我们可以只引入需要的组件，以达到减小项目体积的目的。</p>
+<h2 id="按需引入"><a href="#按需引入" class="headerlink" title="按需引入"></a>按需引入</h2><p>借助 <a target="_blank" rel="noopener" href="https://github.com/QingWei-Li/babel-plugin-component">babel-plugin-component</a>，我们可以只引入需要的组件，以达到减小项目体积的目的。</p>
 <p>首先，安装 babel-plugin-component：</p>
 <pre><code class="shell">npm install babel-plugin-component -D
 </code></pre>
@@ -274,7 +274,7 @@ new Vue(&#123;
 <blockquote>
 <p>可以在components.json中查看组件库有哪些组件。</p>
 </blockquote>
-<h3 id="3-全局配置"><a href="#3-全局配置" class="headerlink" title="3.全局配置"></a>3.全局配置</h3><p>在引入 Element 时，可以传入一个全局配置对象。该对象目前支持 <code>size</code> 与 <code>zIndex</code> 字段。<code>size</code> 用于改变组件的默认尺寸，<code>zIndex</code> 设置弹框的初始 z-index（默认值：2000）。按照引入 Element 的方式，具体操作如下：</p>
+<h1 id="3-全局配置"><a href="#3-全局配置" class="headerlink" title="3.全局配置"></a>3.全局配置</h1><p>在引入 Element 时，可以传入一个全局配置对象。该对象目前支持 <code>size</code> 与 <code>zIndex</code> 字段。<code>size</code> 用于改变组件的默认尺寸，<code>zIndex</code> 设置弹框的初始 z-index（默认值：2000）。按照引入 Element 的方式，具体操作如下：</p>
 <p>完整引入 Element：</p>
 <pre><code class="js">import Vue from &#39;vue&#39;;
 import Element from &#39;element-ui&#39;;
@@ -309,7 +309,7 @@ Vue.use(Button);
 <footer id="footer">
     <div class="footer-wrap">
         <div>
-            © 2022 - 2022 瓜田の鼹鼠
+            © 2022 - 2023 瓜田の鼹鼠
             <span class="footer-icon">
                 <i class="fa-solid fa-font-awesome fa-fw"></i>
             </span>
@@ -318,6 +318,12 @@ Vue.use(Button);
         <div></div>
         <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
                 target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+        <div>
+            备案号：<a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">
+                渝ICP备2022014352号
+            </a>
+        </div>
         
     </div>
 </footer>
