@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
         <title>
-            Js识别不同的浏览器 | 瓜田の鼹鼠的个人博客
+            Js变量的作用域 | 瓜田の鼹鼠的个人博客
         </title>
         <meta name="author" content="瓜田の鼹鼠">
         <meta name="description" content="">
@@ -142,7 +142,7 @@
     <div class="article">
         <div>
             <h1>
-                Js识别不同的浏览器
+                Js变量的作用域
             </h1>
         </div>
         <div class="info">
@@ -152,7 +152,7 @@
                         <use xlink:href="#calendar-solid"></use>
                     </svg>
                 </span>
-                2023/2/26
+                2023/3/1
             </span>
             
                 <span class="category">
@@ -178,7 +178,7 @@
                             
                                 <span class="tag">
                                     
-                                        <a href="/tags/js/" style="color: #00bcd4">
+                                        <a href="/tags/js/" style="color: #03a9f4">
                                             js
                                         </a>
                                 </span>
@@ -187,79 +187,79 @@
                         
         </div>
         <div class="content" v-pre>
-            <p>Navigator 对象包含有关浏览器的信息。我们可以使用Navigator 对象的<font color="#38f">userAgent</font> 属性来获取浏览器的信息。</p>
-<p>userAgent 属性是一个只读的字符串，声明了浏览器用于 HTTP 请求的用户代理头的值。</p>
-<p>1.判断浏览器，不判断版本</p>
-<pre><code class="javascript">   const userAgent = navigator.userAgent; // 获取浏览器信息
-        console.log(userAgent)
-        if (userAgent.includes(&#39;Firefox&#39;)) &#123;
-            // Firefox浏览器
-            // 执行Firefox浏览器特定的代码
-            console.log(&#39;Firefox&#39;)
-        &#125; else if (userAgent.includes(&#39;Chrome&#39;)) &#123;
-            console.log(&#39;Chrome&#39;)
-            // Chrome浏览器
-            // 执行Chrome浏览器特定的代码
-        &#125; else if (userAgent.includes(&#39;Safari&#39;)) &#123;
-            console.log(&#39;Safari&#39;)
-            // Safari浏览器
-            // 执行Safari浏览器特定的代码
-        &#125; else if (userAgent.includes(&#39;Opera&#39;) || userAgent.includes(&#39;OPR&#39;)) &#123;
-            console.log(&#39;Opera&#39;)
-            // Opera浏览器
-            // 执行Opera浏览器特定的代码
-        &#125; else if (userAgent.includes(&#39;Edge&#39;)) &#123;
-            console.log(&#39;Edge&#39;)
-            // Edge浏览器
-            // 执行Edge浏览器特定的代码
-        &#125; else &#123;
-            console.log(&quot;其他浏览器&quot;)
-            // 其他浏览器
-            // 执行其他浏览器特定的代码
+            <h1 id="1-局部作用域"><a href="#1-局部作用域" class="headerlink" title="1.局部作用域"></a>1.局部作用域</h1><p>局部作用域分为函数作用域和块作用域。</p>
+<h2 id="1-1函数作用域"><a href="#1-1函数作用域" class="headerlink" title="1.1函数作用域"></a>1.1函数作用域</h2><p>在函数内部声明的作用域，只能在函数内部被访问，外部无法直接访问。</p>
+<pre><code class="javascript">   function test()&#123;
+            const a = 10;
+            console.log(a,&quot;函数内部访问&quot;);
         &#125;
+        test();
+        console.log(a,&quot;函数外部访问&quot;);
 </code></pre>
-<ol start="2">
-<li>判断浏览器，并判断版本</li>
-</ol>
-<pre><code class="javascript">    const userAgent = navigator.userAgent.toLowerCase();
-    console.log(userAgent)
-    const isIE = userAgent.includes(&#39;msie&#39;) || userAgent.includes(&#39;trident&#39;);
-    const isFirefox = userAgent.includes(&#39;firefox&#39;);
-    const isChrome = userAgent.includes(&#39;chrome&#39;) &amp;&amp; !userAgent.includes(&#39;edge&#39;);
-    const isSafari = userAgent.includes(&#39;safari&#39;) &amp;&amp; !userAgent.includes(&#39;chrome&#39;);
-    const isOpera = userAgent.includes(&#39;opr&#39;) || userAgent.includes(&#39;opera&#39;);
-    const isEdge = userAgent.includes(&#39;edge&#39;);
-    if (isIE) &#123;
-      const ieVersion = parseInt(userAgent.match(/(?:msie |rv:)(\d+(\.\d+)?)/)[1]);
-      // 执行IE浏览器特定的代码
-      console.log(ieVersion,&quot;IE&quot;);
-    &#125; else if (isFirefox) &#123;
-      const firefoxVersion = parseInt(userAgent.match(/firefox\/(\d+(\.\d+)?)/)[1]);
-      // 执行Firefox浏览器特定的代码
-      console.log(firefoxVersion,&quot;Firefox&quot;);
-    &#125; else if (isChrome) &#123;
-      const chromeVersion = parseInt(userAgent.match(/chrome\/(\d+(\.\d+)?)/)[1]);
-      // 执行Chrome浏览器特定的代码
-      console.log(chromeVersion,&quot;chrome&quot;);
-    &#125; else if (isSafari) &#123;
-      const safariVersion = parseInt(userAgent.match(/version\/(\d+(\.\d+)?)/)[1]);
-      // 执行Safari浏览器特定的代码
-      console.log(safariVersion,&quot;safari&quot;);
-    &#125; else if (isOpera) &#123;
-      const operaVersion = parseInt(userAgent.match(/(?:opr|opera)[\s/](\d+(\.\d+)?)/)[1]);
-      // 执行Opera浏览器特定的代码
-      console.log(operaVersion,&quot;opera&quot;);
-    &#125; else if (isEdge) &#123;
-      const edgeVersion = parseInt(userAgent.match(/edge\/(\d+(\.\d+)?)/)[1]);
-      // 执行Edge浏览器特定的代码
-      console.log(edgeVersion,&quot;edge&quot;);
-    &#125; else &#123;
-      // 其他浏览器
-      // 执行其他浏览器特定的代码
-      console.log(&#39;其他浏览器&#39;);
+<p>打开浏览器控制台，可以看到控制台打印了“函数内部访问”，而没有打印””函数外部访问”,而且显示”a is not defined”。</p>
+<img src="/js/js/jsvarsope/image-20230330135620341.png" class title="image-20230330135620341">
+
+<ul>
+<li>函数内部声明的变量，在函数外部无法直接访问。</li>
+<li>函数的参数也是函数的内部定义的局部变，在函数外部无法直接访问。</li>
+<li>不同函数内部声明的变量无法互相访问。</li>
+</ul>
+<h2 id="1-2块级作用域"><a href="#1-2块级作用域" class="headerlink" title="1.2块级作用域"></a>1.2块级作用域</h2><p>在JavaScript中使用{ }包裹的代码称为代码块，代码块内部声明的变量外部有可能无法被访问。</p>
+<pre><code class="javascript"> &#123;
+            let a = 10;
+            console.log(a,&quot;块级作用域内&quot;);
+ &#125;
+        console.log(a,&quot;块级作用域外&quot;);
+</code></pre>
+<img src="/js/js/jsvarsope/image-20230330140726529.png" class title="image-20230330140726529">
+
+<p><font color="#f38">注意</font>:使用var在块级作用域中定义的变量，外部可以访问。</p>
+<pre><code class="javascript">  &#123;
+            var a = 10;
+            console.log(a,&quot;块级作用域内&quot;);
+&#125;
+        console.log(a,&quot;块级作用域外&quot;);
+</code></pre>
+<img src="/js/js/jsvarsope/image-20230330140909887.png" class title="image-20230330140909887">
+
+<ul>
+<li>使用let声明的变量以及使用const声明的常量都会产生块级作用域，var声明的变量不会产生块级作用域。</li>
+<li>不同代码块之间的变量无法相互访问。</li>
+</ul>
+<h1 id="2-全局作用域"><a href="#2-全局作用域" class="headerlink" title="2.全局作用域"></a>2.全局作用域</h1><p>在script标签和.js文件的最外层就是就是全局作用域，在次声明的变量在函数内部也可以被访问。全局作用域中声明的变量，任何其它作用域都可以被访问。</p>
+<pre><code class="javascript">    //a,b是全局作用域
+        let a = 1;
+        let b =2;
+        function f()&#123;
+             
+        &#125;
+        f();
+</code></pre>
+<h1 id="3-作用域链"><a href="#3-作用域链" class="headerlink" title="3.作用域链"></a>3.作用域链</h1><p>作用域链的本质是底层的变量查找机制。</p>
+<ul>
+<li>在函数执行时，会优先在当前函数作用域中查找变量。</li>
+<li>如果当前作用域查找不到则会依次逐级查找父级作用域直到全局作用域。</li>
+</ul>
+<pre><code class="javascript">let a = 1;
+function f()&#123;
+    let a =10;
+    function g()&#123;
+        a =20;
+        console.log(a);
     &#125;
+    console.log(a);
+    g();
+&#125;
+f();
+console.log(a); 
 </code></pre>
-<p>​                                                                                                                                                                                                                                                       </p>
+<p>执行以上的代码，可以看到，依次打印了10、20、1。</p>
+<p>总结：</p>
+<ol>
+<li>嵌套关系的作用域串联起来形成了作用域链。</li>
+<li>相同作用域链中按照从小到大的规则查找变量。</li>
+<li>子作用域能够访问父作用域，父作用域无法访问子作用域。</li>
+</ol>
 
         </div>
         <!-- 文章导航栏,在文章的右侧 -->
