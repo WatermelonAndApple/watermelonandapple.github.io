@@ -1,0 +1,1008 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>
+            SpringBoot的使用 | 瓜田の鼹鼠的个人博客
+        </title>
+        <meta name="author" content="瓜田の鼹鼠">
+        <meta name="description" content="">
+        <meta name="keywords" content="瓜田里的鼹鼠,瓜田の鼹鼠的blog,鼹鼠的blog">
+        <link rel="icon" href="https://images2.alphacoders.com/661/thumbbig-661559.webp">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+                <link rel="stylesheet" href="/css/fonts.min.css">
+                <link rel="stylesheet" href="/css/particlex.css">
+                <!-- 主页文章左边图片的css文件 -->
+                <link rel="stylesheet" href="/css/postimg.css">
+                
+                    <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"></head>
+
+    <body>
+        <!-- 加载动画 -->
+        <div id="loading"
+            style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out">
+            <div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center">
+                <div id="loadcontent"
+                    style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center">
+                    <div>
+                        <h2>LOADING...</h2>
+                        <p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p>
+                        <div><img alt="loading" src="/loading.gif"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">瓜田の鼹鼠</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;主页</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;关于我</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;文章</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;分类</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;标签</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;瓜田の鼹鼠</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">关于我</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">文章</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+    <div class="article">
+        <div>
+            <h1>
+                SpringBoot的使用
+            </h1>
+        </div>
+        <div class="info">
+            <span class="date">
+                <span class="icon">
+                    <svg class="fa-icon">
+                        <use xlink:href="#calendar-solid"></use>
+                    </svg>
+                </span>
+                2022/12/26
+            </span>
+            
+                <span class="category">
+                    <span class="icon">
+                        <svg class="fa-icon">
+                            <use xlink:href="#bookmark-solid"></use>
+                        </svg>
+                    </span>
+                    
+                        <a href="/categories/SpringBoot/" style="color: #38f;">
+                            SpringBoot
+                        </a>
+                        
+                </span>
+                
+                    
+                        <span class="tags">
+                            <span class="icon">
+                                <svg class="fa-icon">
+                                    <use xlink:href="#tags-solid"></use>
+                                </svg>
+                            </span>
+                            
+                                <span class="tag">
+                                    
+                                        <a href="/tags/SpringBoot/" style="color: #ff7d73">
+                                            SpringBoot
+                                        </a>
+                                </span>
+                                
+                        </span>
+                        
+        </div>
+        <div class="content" v-pre>
+            <h1 id="1-使用Spring-Initializer快速创建SpringBoot项目"><a href="#1-使用Spring-Initializer快速创建SpringBoot项目" class="headerlink" title="1.使用Spring Initializer快速创建SpringBoot项目"></a>1.使用Spring Initializer快速创建SpringBoot项目</h1><blockquote>
+<p>Spring Initializer可以直接选择我们需要用到的SpringBoot的模块，然后帮我们快速的创建一个SpringBoot项目。</p>
+</blockquote>
+<h1 id="2-SpringBoot的文件结构"><a href="#2-SpringBoot的文件结构" class="headerlink" title="2.SpringBoot的文件结构"></a>2.SpringBoot的文件结构</h1><p><img src="/springboot/image-20221104131007158.png" alt="image-20221104131007158"></p>
+<ul>
+<li>java文件夹放置所有的java源代码文件。</li>
+<li>test文件夹下进行单元测试，可以直接运行SpringBoot应用的测试</li>
+<li>target文件夹放置编译后的.class文件、配置文件等。</li>
+<li>resources文件夹目录结构：<ul>
+<li>static:保存所有的静态资源，如：（js、css、images）等。</li>
+<li>templates：保存所有的模板页面，如：thymeleaf。</li>
+<li>application.properties：SptingBoot应用的配置文件。</li>
+</ul>
+</li>
+</ul>
+<p>SpringBoot的启动类</p>
+<pre><code class="java">@SpringBootApplication
+public class DemoApplication &#123;
+
+    public static void main(String[] args) &#123;
+        SpringApplication.run(DemoApplication.class, args);
+    &#125;
+
+&#125;
+</code></pre>
+<blockquote>
+<p>@SpringBootApplication标注的类为SpringBoot应用的启动类</p>
+</blockquote>
+<p>SpringBoot配置访问静态资源路径</p>
+<pre><code class="yaml">spring: 
+  mvc: 
+    static-path-pattern: /res/**             #表示访问静态资源需要通过/res/静态资源路径
+    resources: 
+      static-location: classpath:/haha    #表示静态资源必须放在类路径下的haha文件夹下
+</code></pre>
+<h1 id="3-SpringBoot的配置文件"><a href="#3-SpringBoot的配置文件" class="headerlink" title="3.SpringBoot的配置文件"></a>3.SpringBoot的配置文件</h1><blockquote>
+<p>SpringBoot默认支持两种配置文件，<code>.properties和.yml</code>文件。</p>
+</blockquote>
+<p>SpringBoot使用全局配置文件<code>application.properties</code>或<code>application.yml</code>。全局配置文件可以修改SpringBoot自动配置的默认值。如果application.properties和application.yml都存在，则默认先读取application.properties文件，后读取application.yml</p>
+<h2 id="3-1-YAML"><a href="#3-1-YAML" class="headerlink" title="3.1 YAML"></a>3.1 YAML</h2><p>YAML数据为中心，它比json和xml更适合做配置文件。</p>
+<p><strong>基本语法</strong>：</p>
+<p>k:（空格)v:表示一对键值对（必须有空格）；</p>
+<p>以空格的缩进来控制层级关系；只要是左对齐的一列数据，都是一个层级的</p>
+<pre><code class="yaml">server: 
+    port: 8081
+    path: /hello
+</code></pre>
+<blockquote>
+<p>属性和值都是大小写敏感的</p>
+</blockquote>
+<p><strong>对象、Map（属性和值）（键值对：</strong></p>
+<pre><code class="yaml">person: 
+    name: zhangsan
+    age: 20
+    gender: &quot;男&quot;
+    
+    #或者如下写法：
+    
+person: &#123;name: zhangsan , age: 20 , gender: &quot;男&quot;&#125;
+</code></pre>
+<p><strong>数组写法：</strong></p>
+<p>用-值表示数组中的一个元素</p>
+<pre><code class="yaml">pets: 
+ - cat
+ - dog
+ - pig
+ 
+ #或者
+ 
+ pet: [cat,dog,pig]
+</code></pre>
+<h2 id="3-2-绑定配置文件中数据"><a href="#3-2-绑定配置文件中数据" class="headerlink" title="3.2 绑定配置文件中数据"></a>3.2 绑定配置文件中数据</h2><p>创建如下javaBean类</p>
+<pre><code class="java">public class Person &#123;
+    private String name;
+    private Integer age;
+    private Boolean boss;
+    private Date birth;
+    private Map&lt;String , Object&gt; maps;
+    private List&lt;Object&gt; lsits;
+    private Dog dog;
+    ...    
+&#125;
+</code></pre>
+<pre><code class="java">public class Dog &#123;
+    private String dogName;
+    private Integer dogAge;
+    ...
+&#125;
+</code></pre>
+<p>在application.yml配置文件中配置如下：</p>
+<pre><code class="yaml">person:
+  name: zhangssan
+  age: 18
+  boss: true
+  birth: 2000/10/01
+  maps: &#123;k1: v1,k2: v2&#125;
+  lsits: [list1,list2,list3]
+  dog:
+    dogName: 小狗
+    dogAge: 8
+</code></pre>
+<p>将如上配置问文件中配置的值映射到我们所写的类中。使用<code>@ConfigurationProperties</code>注解来完成映射。</p>
+<pre><code class="java">@Component
+@ConfigurationProperties(prefix=&quot;person&quot;)
+public class Person &#123;
+    private String name;
+    private Integer age;
+    private Boolean boss;
+    private Date birth;
+    private Map&lt;String , Object&gt; maps;
+    private List&lt;Object&gt; lsits;
+    private Dog dog;
+    ...    
+&#125;
+</code></pre>
+<p>添加完注解后，点击test进行单元测试:</p>
+<pre><code class="java">@SpringBootTest
+class AssetMagementApplicationTests &#123;
+   @Autowired
+    Person person;
+    @Test
+    void contextLoads() &#123;
+        System.out.println(person);
+    &#125;
+&#125;
+</code></pre>
+<img src="/SpringBoot/springboot/SpringBoot/image-20221104205645181.png" class title="image-20221104205645181">
+
+<p>如上图所示，成功将数映射到person中。</p>
+<pre><code class="xml">&lt;!--        导入配置文件处理器,导入后写配置文件就会有提示--&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-configuration-processor&lt;/artifactId&gt;
+            &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<h1 id="4-SpringBoot在Controller中的常用注解"><a href="#4-SpringBoot在Controller中的常用注解" class="headerlink" title="4.SpringBoot在Controller中的常用注解"></a>4.SpringBoot在Controller中的常用注解</h1><ul>
+<li>@RestController：该注解包含了@Controller和@ResponseBody注解。</li>
+<li>@GetMapping：该注解是@RequestMapping(method&#x3D;RequestMethod.GET)的缩写。表示请求资源应该使用get方式。</li>
+<li>@PostMapping：该注解是@RequestMapping(method&#x3D;RequestMethod.POST)的缩写。表示请求资源应该使用post方式。</li>
+<li>@PutMapping：该注解是@RequestMapping(method&#x3D;RequestMethod.PUT)的缩写。表示请求资源应该使用put方式。</li>
+<li>@DeleteMapping：该注解是@RequestMapping(method&#x3D;RequestMethod.DELETE)的缩写。表示请求资源应该使用delete方式。</li>
+</ul>
+<h1 id="5-SpringBoot整合WEB开发"><a href="#5-SpringBoot整合WEB开发" class="headerlink" title="5.SpringBoot整合WEB开发"></a>5.SpringBoot整合WEB开发</h1><h2 id="5-1-Thymeleaf"><a href="#5-1-Thymeleaf" class="headerlink" title="5.1 Thymeleaf"></a>5.1 Thymeleaf</h2><blockquote>
+<p>Thymeleaf官网:<a target="_blank" rel="noopener" href="https://www.thymeleaf.org/">https://www.thymeleaf.org/</a></p>
+</blockquote>
+<p>前端常用的模板引擎有jsp、Freemaker、Thymeleaf等，模板引擎的作用是把数据和静态模板进行绑定，生成我们想要的HTMl。SpringBoot推荐使用Thymeleaf，其语法简单、功能强大。</p>
+<p>Thymeleaf是现代服务器端的模板引擎，适用于Web和对立环境的现代服务器端Java模板引擎，与传统的JSP不同，Thymeleaf可以使用浏览器直接打开。</p>
+<h3 id="5-1-1-Thymeleaf的使用"><a href="#5-1-1-Thymeleaf的使用" class="headerlink" title="5.1.1  Thymeleaf的使用"></a>5.1.1  Thymeleaf的使用</h3><p>引入Thymeleaf</p>
+<p>在pom.xml文件中引入Thymeleaf的依赖。</p>
+<pre><code class="xml">     &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;/artifactId&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>Thymeleaf模板的默认位置放在resources&#x2F;templates目录下，默认的后缀为.html。</p>
+<p>Thymeleaf的使用步骤</p>
+<p>在页面中导入Thymeleaf的命名空间，以获得代码的提示。代码如下：</p>
+<pre><code class="html">&lt;!--    引入Thymeleaf的命名空间--&gt;
+&lt;html  xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+</code></pre>
+<p>例如：</p>
+<p>编写如下Controller，代码如下：</p>
+<pre><code class="java">@Controller
+public class SpringBootWebController &#123;
+    @GetMapping(&quot;/index&quot;)
+    public String index(Model model)&#123;
+        System.out.println(&quot;执行了&quot;);
+        List&lt;User&gt; lists=new ArrayList&lt;User&gt;() ;
+        for(int i=0;i&lt;=3;i++)&#123;
+            User u=new User();
+            u.setAddress(&quot;广航&quot;+i);
+            u.setId(i);
+            u.setName(&quot;名字&quot;+i);
+            lists.add(u);
+        &#125;
+        //将数据添加到模型中
+        model.addAttribute(&quot;lists&quot;,lists);
+        return &quot;index&quot;;
+    &#125;
+&#125;
+class User&#123;
+    private int id;
+    private String name;
+    private String address;
+    //省略get、set方法
+&#125;
+</code></pre>
+<p>在resources&#x2F;templates创建Thymeleaf的模板，index.html文件。</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;!--    引入Thymeleaf的命名空间--&gt;
+&lt;html  lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;title&gt;Thymeleaf适用&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;table&gt;
+        &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;td&gt;编号&lt;/td&gt;
+            &lt;td&gt;姓名&lt;/td&gt;
+            &lt;td&gt;地址&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+        &lt;tr th:each=&quot;user: $&#123;lists&#125;&quot;&gt;
+            &lt;td th:text=&quot;$&#123;user.id&#125;&quot;&gt;编号&lt;/td&gt;
+            &lt;td th:text=&quot;$&#123;user.name&#125;&quot;&gt;姓名&lt;/td&gt;
+            &lt;td th:text=&quot;$&#123;user.address&#125;&quot;&gt;地址&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>启动SpringBoot应用，并在浏览器访问localhost:8080&#x2F;index，查看效果。</p>
+<img src="/SpringBoot/springboot/SpringBoot/image-20221105232922881.png" class title="image-20221105232922881">
+
+<p>也可以在页面模板中直接通过js获取，代码如下：</p>
+<pre><code class="html">    &lt;script th:inline=&quot;javascript&quot;&gt;
+        const str=[[ $&#123;lists&#125; ]];
+        console.log(str);
+    &lt;/script&gt;
+</code></pre>
+<h3 id="5-1-2-Thymeleaf的语法"><a href="#5-1-2-Thymeleaf的语法" class="headerlink" title="5.1.2 Thymeleaf的语法"></a>5.1.2 Thymeleaf的语法</h3><p><strong>1.Thymeleaf的常用表达式</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">表达式</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">${……}</td>
+<td align="center">变量表达式</td>
+</tr>
+<tr>
+<td align="center">*{……}</td>
+<td align="center">选择表达式</td>
+</tr>
+<tr>
+<td align="center">#{……}</td>
+<td align="center">消息文字表达式</td>
+</tr>
+<tr>
+<td align="center">@{……}</td>
+<td align="center">连接URL表达式</td>
+</tr>
+</tbody></table>
+<p><strong>2.常用的标签操作</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">标签</th>
+<th align="center">功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">th:value</td>
+<td align="center">给属性赋值</td>
+</tr>
+<tr>
+<td align="center">th:stlye</td>
+<td align="center">设置样式</td>
+</tr>
+<tr>
+<td align="center">th:onclick</td>
+<td align="center">单击事件</td>
+</tr>
+<tr>
+<td align="center">th:if</td>
+<td align="center">条件判断</td>
+</tr>
+<tr>
+<td align="center">th:unless</td>
+<td align="center">条件判断同th:if相反</td>
+</tr>
+<tr>
+<td align="center">th:href</td>
+<td align="center">超链接</td>
+</tr>
+<tr>
+<td align="center">th:switch</td>
+<td align="center">配合th:case</td>
+</tr>
+<tr>
+<td align="center">th:case</td>
+<td align="center">配合th:switch</td>
+</tr>
+<tr>
+<td align="center">th:src</td>
+<td align="center">图片类地址引入</td>
+</tr>
+<tr>
+<td align="center">th:action</td>
+<td align="center">表单提交地址</td>
+</tr>
+</tbody></table>
+<p><strong>3.常用的函数</strong></p>
+<table>
+<thead>
+<tr>
+<th align="center">函数</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">#dates</td>
+<td align="center">日期函数</td>
+</tr>
+<tr>
+<td align="center">#lists</td>
+<td align="center">列表函数</td>
+</tr>
+<tr>
+<td align="center">#arrays</td>
+<td align="center">数组函数</td>
+</tr>
+<tr>
+<td align="center">#strings</td>
+<td align="center">字符串函数</td>
+</tr>
+<tr>
+<td align="center">#numbers</td>
+<td align="center">数字函数</td>
+</tr>
+<tr>
+<td align="center">#calendars</td>
+<td align="center">日历函数</td>
+</tr>
+<tr>
+<td align="center">#objects</td>
+<td align="center">对象函数</td>
+</tr>
+<tr>
+<td align="center">#bools</td>
+<td align="center">逻辑函数</td>
+</tr>
+</tbody></table>
+<h2 id="5-2-SpringBoot返回JSON数据"><a href="#5-2-SpringBoot返回JSON数据" class="headerlink" title="5.2 SpringBoot返回JSON数据"></a>5.2 SpringBoot返回JSON数据</h2><p>在项目开发过程中，接口与接口之间，以及前后端之间数据的传输都使用JSON格式。在SpringBoot中要想让controller返回JSON数据需要使用@RestController注解。@RestController注解是SpringBoot中新增的一个注解，它包含了原来的Spring中的@Controller注解以及@ResponseBody注解，@ResponseBody注解是将返回的数据结构转换为JSON格式。</p>
+<blockquote>
+<p>SpringBoot默认使用Jackson解析框架来进行JSON解析。</p>
+</blockquote>
+<h3 id="5-2-1-常用的数据类型转换为JSON格式"><a href="#5-2-1-常用的数据类型转换为JSON格式" class="headerlink" title="5.2.1 常用的数据类型转换为JSON格式"></a>5.2.1 常用的数据类型转换为JSON格式</h3><p>在实际项目开发过程中，常用的数据结构无非对象、LIst对象、Map对象。</p>
+<p><strong>1.创建实体类Person</strong></p>
+<pre><code class="java">public class Person &#123;
+    private int age;//年龄
+    private String name;//名字
+    private String hobby;//爱好
+    //省略get、set方法和构造器
+&#125;
+</code></pre>
+<p><strong>2.创建Controller类</strong></p>
+<pre><code class="java">@RestController
+@RequestMapping(&quot;/json&quot;)
+public class PersonJSONController &#123;
+    @RequestMapping(&quot;/person&quot;)
+    public Person getPerson()&#123;//返回实体对象
+        return new Person(18,&quot;张三&quot;,&quot;运动&quot;);
+    &#125;
+    @RequestMapping(&quot;/list&quot;)
+    public List&lt;Person&gt; getPersonList()&#123;//返回list对象
+        List &lt;Person&gt; list=new ArrayList&lt;&gt;();
+        Person p1=new Person(20,&quot;李四&quot;,&quot;音乐&quot;);
+        Person p2=new Person(34,&quot;王五&quot;,&quot;游戏&quot;);
+        list.add(p1);
+        list.add(p2);
+        return list;
+    &#125;
+    @RequestMapping(&quot;/map&quot;)
+    public Map&lt;String,Object&gt; getMapPerson()&#123;
+        Map &lt;String,Object&gt; map=new HashMap&lt;&gt;(3);
+        Person p3=new Person(30,&quot;小七&quot;,&quot;电影&quot;);
+        map.put(&quot;person&quot;,p3);
+        map.put(&quot;info&quot;,&quot;1231232圣诞福利SDK分类&quot;);
+        map.put(&quot;工作&quot;,&quot;3D建模&quot;);
+        return map;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>3.测试不同数据类型返回的JSON格式</strong></p>
+<p>控制层接口完成后，分别返回了Person对象，List集合，Map集合。接下来我们在浏览器次输入如下测试效果。</p>
+<pre><code>输入：
+http://localhost:8080/json/person
+结果：
+&#123;&quot;age&quot;:18,&quot;name&quot;:&quot;张三&quot;,&quot;hobby&quot;:&quot;运动&quot;&#125;
+输入：
+http://localhost:8080/json/list
+结果：
+[&#123;&quot;age&quot;:20,&quot;name&quot;:&quot;李四&quot;,&quot;hobby&quot;:&quot;音乐&quot;&#125;,&#123;&quot;age&quot;:34,&quot;name&quot;:&quot;王五&quot;,&quot;hobby&quot;:&quot;游戏&quot;&#125;]
+输入：
+http://localhost:8080/json/map
+结果：
+&#123;&quot;工作&quot;:&quot;3D建模&quot;,&quot;person&quot;:&#123;&quot;age&quot;:30,&quot;name&quot;:&quot;小七&quot;,&quot;hobby&quot;:&quot;电影&quot;&#125;,&quot;info&quot;:&quot;1231232圣诞福利SDK分类&quot;&#125;
+</code></pre>
+<h3 id="5-2-2-Jackson对null值的处理"><a href="#5-2-2-Jackson对null值的处理" class="headerlink" title="5.2.2 Jackson对null值的处理"></a>5.2.2 Jackson对null值的处理</h3><p>在实际开发过程中，难免会遇到一些null值。如果我们不想让这些null值出现，比如我们希望所有的null值都变为空字符串。我们可以做如下配置，新建一个Jackson配置类：</p>
+<pre><code class="java">@Configuration
+public class JacksonConfig &#123;
+    @Bean
+    @Primary
+    @ConditionalOnMissingBean(ObjectMapper.class)
+    public ObjectMapper jacksonObjectMapper(Jackson2ObjectMapperBuilder builder)&#123;
+        ObjectMapper objectMapper=builder.createXmlMapper(false).build();
+        objectMapper.getSerializerProvider().setNullValueSerializer(new JsonSerializer&lt;Object&gt;() &#123;
+            @Override
+            public void serialize(Object o, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
+                    throws IOException &#123;
+                jsonGenerator.writeString(&quot;&quot;);
+            &#125;
+        &#125;);
+        return objectMapper;
+    &#125;
+&#125;
+</code></pre>
+<p>然后后修改上面返回map的接口，在其后添加一行</p>
+<pre><code class="java">   map.put(&quot;123&quot;,null);
+</code></pre>
+<p>修改后再次查看，可以看到原本的null值变为了空字符串。</p>
+<h3 id="5-2-3-封装统一返回的数据结构"><a href="#5-2-3-封装统一返回的数据结构" class="headerlink" title="5.2.3 封装统一返回的数据结构"></a>5.2.3 封装统一返回的数据结构</h3><p>以上是SpringBoot返回JSON格式的几个有代表性的例子，但是在实际项目中，除了要封装数据之外，往往还要在返回JJSON格式中添加一些其他的信息，例如返回一些状态码code，返回一些说明信息msg给调用者，这样调用者可以根据code或者msg做一些逻辑判断。所以在实际开发过程中，我们需要封装一个统一的JSON返回结构用于存储信息。</p>
+<p><strong>1.定义统一的JSON结构</strong></p>
+<p>由于封装的JSON数据类型不确定，所以需要用到泛型。统一的JSON结构中的属性包括数据、状态码、提示信息等。</p>
+<pre><code class="java">public class JsonResult &lt;T&gt;&#123;
+    private T data;
+    private String code;
+    private String msg;
+    /**
+     * 若没有数据返回，则默认状态码为0，提示信息为操作成功
+     */
+    public JsonResult()&#123;
+        this.code=&quot;0&quot;;
+        this.msg=&quot;操作成功&quot;;
+    &#125;
+    /**
+     * 若没有数据返回，可以人为指定状态码和提示信息
+     * @param code
+     * @param msg
+     */
+    public JsonResult(String code,String msg)&#123;
+        this.code=code;
+        this.msg=msg;
+    &#125;
+    /**
+     * 有数据返回，状态码为0，默认提示信息是:操作成功
+     * @param data
+     */
+    public JsonResult(T data)&#123;
+        this();
+        this.data=data;
+    &#125;
+    /**
+     * 有数据返回，状态码为0，人为指定提示信息
+     * @param datam
+     * @param msg
+     */
+    public JsonResult(T datam,String msg)&#123;
+        this.code=&quot;0&quot;;
+        this.data=data;
+        this.msg=msg;
+    &#125;
+    //省略get、set
+&#125;
+</code></pre>
+<p><strong>2.修改之前的Controller</strong></p>
+<pre><code class="java">@RestController
+@RequestMapping(&quot;/json&quot;)
+public class PersonJSONController &#123;
+    @RequestMapping(&quot;/person&quot;)
+    public JsonResult&lt;Person&gt; getPerson()&#123;//返回实体对象
+        Person p=new Person(18,&quot;张三&quot;,&quot;运动&quot;);
+        return new JsonResult&lt;&gt;(p);
+    &#125;
+    @RequestMapping(&quot;/list&quot;)
+    public JsonResult&lt;List&lt;Person&gt;&gt; getPersonList()&#123;//返回list对象
+        List &lt;Person&gt; list=new ArrayList&lt;&gt;();
+        Person p1=new Person(20,&quot;李四&quot;,&quot;音乐&quot;);
+        Person p2=new Person(34,&quot;王五&quot;,&quot;游戏&quot;);
+        list.add(p1);
+        list.add(p2);
+        return new JsonResult &lt;&gt;(list,&quot;返回list集合&quot;);
+    &#125;
+    @RequestMapping(&quot;/map&quot;)
+    public JsonResult&lt;Map&lt;String,Object&gt;&gt; getMapPerson()&#123;
+        Map &lt;String,Object&gt; map=new HashMap&lt;&gt;(3);
+        Person p3=new Person(30,&quot;小七&quot;,&quot;电影&quot;);
+        map.put(&quot;person&quot;,p3);
+        map.put(&quot;info&quot;,&quot;1231232圣诞福利SDK分类&quot;);
+        map.put(&quot;工作&quot;,&quot;3D建模&quot;);
+        map.put(&quot;123&quot;,null);
+        return  new JsonResult&lt;&gt;(map);
+    &#125;
+&#125;
+</code></pre>
+<h2 id="5-3-SprinBoot中的异常处理"><a href="#5-3-SprinBoot中的异常处理" class="headerlink" title="5.3 SprinBoot中的异常处理"></a>5.3 SprinBoot中的异常处理</h2><p>在SpringBoot中，不管是对底层数据库的操作还是业务层的处理，以及控制层的处理，都不可避免的会遇到各种异常。</p>
+<p>异常代码如下：</p>
+<pre><code class="java">@Controller
+public class ExceptionController &#123;
+    private static final Logger log= LoggerFactory.getLogger(ExceptionController.class);
+    @RequestMapping(&quot;/exceptionMethod&quot;)
+    public String exceptionMethod(Model model)throws Exception&#123;
+        //除0异常
+        model.addAttribute(&quot;msg&quot;,&quot;没有异常&quot;);
+        int num= 10/0;
+        log.info(String.valueOf(num));
+        return &quot;index&quot;;
+    &#125;
+&#125;
+</code></pre>
+<p>可以看到以上代码存在除0异常。</p>
+<h3 id="5-3-1-自定义异常错误页面"><a href="#5-3-1-自定义异常错误页面" class="headerlink" title="5.3.1 自定义异常错误页面"></a>5.3.1 自定义异常错误页面</h3><p>在发生异常时，SpringBoot会默认返回一个异常页面。</p>
+<img src="/SpringBoot/springboot/SpringBoot/image-20221106143625378.png" class title="image-20221106143625378">
+
+<p>SpringBoot发生异常就会请求&#x2F;error页面,我们可以自定义error页面，比如使用thymeleaf在templates下创建我们自己的错误页面error.html</p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot; xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;错误页面:自定义SpringBoot异常处理页面&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    自定义SpringBoot异常处理页面
+    &lt;br/&gt;
+    &lt;p th:text=&quot;$&#123;msg&#125;&quot;&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>创建好后再次访问&#x2F;exceptionMethod接口页面就变为我们自定义的了。</p>
+<img src="/SpringBoot/springboot/SpringBoot/image-20221106144159227.png" class title="image-20221106144159227">
+
+<h3 id="5-3-2-异常处理"><a href="#5-3-2-异常处理" class="headerlink" title="5.3.2 异常处理"></a>5.3.2 异常处理</h3><p><strong>1.使用@ExceptionHandler注解处理局部异常</strong></p>
+<p>在将上面的异常代码中键入异常处理方法</p>
+<pre><code class="java">@Controller
+public class ExceptionController &#123;
+    private static final Logger log= LoggerFactory.getLogger(ExceptionController.class);
+    @RequestMapping(&quot;/exceptionMethod&quot;)
+    public String exceptionMethod(Model model)throws Exception&#123;
+        //除0异常
+        model.addAttribute(&quot;msg&quot;,&quot;没有异常&quot;);
+        int num= 10/0;
+        log.info(String.valueOf(num));
+        return &quot;index&quot;;
+    &#125;
+
+    /**
+     * 描述：捕获异常ExceptionController中的ArithmeticException异常
+     * @param model  将model对象注入方法
+     * @param e    将产生的异常对象啊注入方法
+     * @return 返回error.html页面
+     */
+    @ExceptionHandler(value= &#123;ArithmeticException.class&#125;)
+    public String arithmenticExceptionHandle(Model model,Exception e)&#123;
+        model.addAttribute(&quot;msg&quot;,&quot;处理除0异常@ExceptionHandle&quot;+e.getMessage());
+        log.info(e.getMessage());
+        return &quot;error&quot;;//返回错误页面
+    &#125;
+&#125;
+</code></pre>
+<p>可以看到@ExceptionHandler拦截了异常，我们可以通过该类注解实现自定义异常处理。其中，@ExceptionHandler配置的value指定需要拦截的异常类型。，该类方法只能处理自己所在的Controller。</p>
+<img src="/SpringBoot/springboot/SpringBoot/image-20221106144629714.png" class title="image-20221106144629714">
+
+<p><strong>2.使用@ControllerAdvice注解处理全局异常</strong></p>
+<p>使用@ControllerAdvice + @ExceptionHandler注解处理全局异常，推荐使用这种方式，可以根据不同的异常进行处理。</p>
+<p>编写全局异常处理类GlobalException</p>
+<pre><code class="java">@ControllerAdvice
+public class GlobalException &#123;
+    private static final Logger log= LoggerFactory.getLogger(ExceptionController.class);
+    /**
+     * 描述：捕获ArithmeticException异常
+     * @param model  将model对象注入方法
+     * @param e    将产生的异常对象啊注入方法
+     * @return 返回error.html页面
+     */
+    @ExceptionHandler(value= &#123;ArithmeticException.class&#125;)
+    public String arithmenticExceptionHandle(Model model, Exception e)&#123;
+        model.addAttribute(&quot;msg&quot;,&quot;处理除0异常@ExceptionHandle&quot;+e.getMessage());
+        log.info(e.getMessage());
+        return &quot;error&quot;;//返回错误页面
+    &#125;
+&#125;
+</code></pre>
+<h2 id="5-4-SpringBoot中使用拦截器"><a href="#5-4-SpringBoot中使用拦截器" class="headerlink" title="5.4 SpringBoot中使用拦截器"></a>5.4 SpringBoot中使用拦截器</h2><p>SpringBoot延续了Spring MVC提供的AOP风格拦截器，拥有精细的拦截处理能力，在SpringBoot中拦截器的使用更加方便。只需要创建一个拦截器类并实现HandlerInterceptor接口。</p>
+<p>在项目中创建interceptor包并创建一个登录拦截器LoginInterceptor拦截器并实现HandlerInterceptor接口。</p>
+<p>LoginInterceptor拦截器代码如下：</p>
+<pre><code class="java">/**
+ * 登录拦截器
+ */
+public class LoginInterceptor  implements HandlerInterceptor &#123;
+    private static final Logger log= LoggerFactory.getLogger(LoginInterceptor.class);
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+            throws Exception &#123;
+        HandlerMethod handlerMethod = (HandlerMethod) handler;
+        Method method = handlerMethod.getMethod();
+        String methodName = method.getName();
+        log.info(&quot;拦截到了方法，在该方法执行之前执行&quot;,methodName);
+        //判断用户有没有登录成功,检查用户的token，一般登录成功的用户都有一个对应的token
+        String token = request.getParameter(&quot;token&quot;);
+        if(null == token || &quot;&quot;.equals(token))&#123;
+            //如果没有登录重定向到login页面
+            log.info(&quot;用户未登录，请先登录&quot;);
+            response.sendRedirect(&quot;/login&quot;);
+            return false;
+        &#125;
+        //如果登录了则放行
+        return true;
+    &#125;
+
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+                           ModelAndView modelAndView) throws Exception &#123;
+        log.info(&quot;执行完方法后（执行Controller方法调用之后），但是此时还没有进行视图渲染&quot;);
+    &#125;
+
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler,
+                                Exception ex) throws Exception &#123;
+        log.info(&quot;整个请求都已处理完毕后，DispatcherServlet也渲染了对应的视图，此时可以做一些其他工作（比如：清理）&quot;);
+    &#125;
+&#125;
+</code></pre>
+<p>每一个拦截器都要实现HandlerInterceptor接口。实现给接口的3种方法preHandle、postHandle、afterCompletion，每种方法会在请求调用的不同时期完成。</p>
+<ul>
+<li>preHandle：在业务处理请求之前调用，可以进行预处理，可以进行编码，安全控制，权限验证等处理。</li>
+<li>postHandle：在业务处理请求执行完毕后调用，生成视图之前执行。</li>
+<li>afterCompletion：在Dispatcher Servlet完全处理完请求后被调用，可以用于清理资源等。此时已经渲染了页面。</li>
+</ul>
+<p>要想让拦截器生效需要注册拦截器。在SpringBoot中可以通过配置类注册拦截器。只需要创建一个拦截器配置类并实现WebMVCConfiguration接口，覆盖接口中的addInterceptor方法，并为配置类添加@Configuration注解，标注此类是一个配置类，让SpringBoot能够扫描到。</p>
+<pre><code class="java">@Configuration
+public class InterceptorConfig implements WebMvcConfigurer &#123;
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) &#123;
+//        WebMvcConfigurer.super.addInterceptors(registry);
+        //需要拦截的路径，/**,表示拦截所有的请求
+        String [] addPathPatterns = &#123;&quot;/**&quot;&#125;;
+//不需要拦截的路径，表示除了登录与注册之外，其他的都拦截
+        String [] excludePathPatterns = &#123;
+                &quot;/login&quot;,
+                &quot;/registry&quot;,
+                &quot;/**/*.js&quot;,
+                &quot;/**/*.css&quot;
+        &#125;;
+        //注册LoginInterceptor拦截器,
+        registry.addInterceptor(new LoginInterceptor())
+                .addPathPatterns(addPathPatterns)
+                .excludePathPatterns(excludePathPatterns);
+    &#125;
+&#125;
+</code></pre>
+<p>启动项目，在浏览器中输入localhost:8080&#x2F;index，会发现我们被拦截了，如果输入localhost:8080&#x2F;index?token&#x3D;123，则会发现可以正常访问（类似于登录）了。</p>
+<h1 id="6-lombok"><a href="#6-lombok" class="headerlink" title="6.lombok"></a>6.lombok</h1><p>添加lombok依赖</p>
+<pre><code class="xml">     &lt;dependency&gt;
+            &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+            &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+            &lt;optional&gt;true&lt;/optional&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<p>然后在IDEA的插件商店下载lombok插件。</p>
+<p>使用如下：</p>
+<ul>
+<li>@Data  注解：会为类的所有属性自动生成setter&#x2F;getter、equals、canEqual、hashCode、toString方法，如为final属性，则不会为该属性生成setter方法。</li>
+<li>@Getter&#x2F;@Setter 注解：会为类自动生成getter、setter方法</li>
+<li>@NonNull  注解：该注解用在属性或构造器上，Lombok会生成一个非空的声明，可用于校验参数，能帮助避免空指针。</li>
+<li>@ToString  注解: Lombok会生成一个toString()方法，默认情况下，会输出类名、所有属性（会按照属性定义顺序），用逗号来分割。</li>
+<li>@NoArgsConstructor, @RequiredArgsConstructor and @AllArgsConstructor 注解：分别对应无参构造器、部分参数构造器、全参构造器。Lombok没法实现多种参数构造器的重载。</li>
+</ul>
+<h1 id="7-SpringBoot的热部署devtools"><a href="#7-SpringBoot的热部署devtools" class="headerlink" title="7.SpringBoot的热部署devtools"></a>7.SpringBoot的热部署devtools</h1><p>导入依赖 </p>
+<pre><code class="xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-devtools&lt;/artifactId&gt;
+    &lt;scope&gt;runtime&lt;/scope&gt;
+    &lt;optional&gt;true&lt;/optional&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>每次修改后按下ctrl  +  F9 键进行热部署</p>
+<h1 id="8-SpringBoot的请求处理注解"><a href="#8-SpringBoot的请求处理注解" class="headerlink" title="8.SpringBoot的请求处理注解"></a>8.SpringBoot的请求处理注解</h1><ul>
+<li>@PathVariable：获取请求路径变量</li>
+<li>@RequestHeader：获取请求头</li>
+<li>@ModelAttribute：获取模型属性</li>
+<li>@RequestParam：获取请求参数</li>
+<li>@MatrixVariable：矩阵变量</li>
+<li>@CookieValue：获取cookkie值</li>
+<li>@RequestBody：获取请求体</li>
+</ul>
+<pre><code class="java">@RestController
+public class ParameterTestController &#123;
+
+
+    //  car/2/owner/zhangsan
+    @GetMapping(&quot;/car/&#123;id&#125;/owner/&#123;username&#125;&quot;)
+    public Map&lt;String,Object&gt; getCar(@PathVariable(&quot;id&quot;) Integer id,
+                                     @PathVariable(&quot;username&quot;) String name,
+                                     @PathVariable Map&lt;String,String&gt; pv,
+                                     @RequestHeader(&quot;User-Agent&quot;) String userAgent,
+                                     @RequestHeader Map&lt;String,String&gt; header,
+                                     @RequestParam(&quot;age&quot;) Integer age,
+                                     @RequestParam(&quot;inters&quot;) List&lt;String&gt; inters,
+                                     @RequestParam Map&lt;String,String&gt; params,
+                                     @CookieValue(&quot;_ga&quot;) String _ga,
+                                     @CookieValue(&quot;_ga&quot;) Cookie cookie)&#123;
+
+
+        Map&lt;String,Object&gt; map = new HashMap&lt;&gt;();
+
+//        map.put(&quot;id&quot;,id);
+//        map.put(&quot;name&quot;,name);
+//        map.put(&quot;pv&quot;,pv);
+//        map.put(&quot;userAgent&quot;,userAgent);
+//        map.put(&quot;headers&quot;,header);
+        map.put(&quot;age&quot;,age);
+        map.put(&quot;inters&quot;,inters);
+        map.put(&quot;params&quot;,params);
+        map.put(&quot;_ga&quot;,_ga);
+        System.out.println(cookie.getName()+&quot;===&gt;&quot;+cookie.getValue());
+        return map;
+    &#125;
+
+
+    @PostMapping(&quot;/save&quot;)
+    public Map postMethod(@RequestBody String content)&#123;
+        Map&lt;String,Object&gt; map = new HashMap&lt;&gt;();
+        map.put(&quot;content&quot;,content);
+        return map;
+    &#125;
+
+
+    //1、语法： 请求路径：/cars/sell;low=34;brand=byd,audi,yd
+    //2、SpringBoot默认是禁用了矩阵变量的功能
+    //      手动开启：原理。对于路径的处理。UrlPathHelper进行解析。
+    //              removeSemicolonContent（移除分号内容）支持矩阵变量的
+    //3、矩阵变量必须有url路径变量才能被解析
+    @GetMapping(&quot;/cars/&#123;path&#125;&quot;)
+    public Map carsSell(@MatrixVariable(&quot;low&quot;) Integer low,
+                        @MatrixVariable(&quot;brand&quot;) List&lt;String&gt; brand,
+                        @PathVariable(&quot;path&quot;) String path)&#123;
+        Map&lt;String,Object&gt; map = new HashMap&lt;&gt;();
+
+        map.put(&quot;low&quot;,low);
+        map.put(&quot;brand&quot;,brand);
+        map.put(&quot;path&quot;,path);
+        return map;
+    &#125;
+
+    // /boss/1;age=20/2;age=10
+
+    @GetMapping(&quot;/boss/&#123;bossId&#125;/&#123;empId&#125;&quot;)
+    public Map boss(@MatrixVariable(value = &quot;age&quot;,pathVar = &quot;bossId&quot;) Integer bossAge,
+                    @MatrixVariable(value = &quot;age&quot;,pathVar = &quot;empId&quot;) Integer empAge)&#123;
+        Map&lt;String,Object&gt; map = new HashMap&lt;&gt;();
+
+        map.put(&quot;bossAge&quot;,bossAge);
+        map.put(&quot;empAge&quot;,empAge);
+        return map;
+
+    &#125;
+
+&#125;
+</code></pre>
+
+        </div>
+        <!-- 文章导航栏,在文章的右侧 -->
+        <div id="content-left-nav">
+            <!-- //回到页面顶部 -->
+            <span id="go-to-top">
+                <a href="#main"><i class="fa-solid fa-caret-up"></i></a>
+            </span>
+        </div>
+        <!-- 引入文章标题导航栏js -->
+        <script src="/js/page-left-nav.js"></script>
+        <!-- 评论 -->
+        
+    </div>
+                             
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2023 瓜田の鼹鼠
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @瓜田の鼹鼠
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+        <div>
+            备案号：<a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">
+                渝ICP备2022014352号
+            </a>
+        </div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        <!-- 引入接受名人名言的js文件 -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="/js/mingrenminyan.js"></script>
+        <!-- 引入鼠标点击特效的js文件 -->
+        <script src="/js/firework.js"></script>
+        <!-- 引入樱花背景飘落特效 -->
+        <canvas id="sakura"></canvas>
+        <script src="/js/sakura.js" type="module"></script>
+        
+
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"debug":false,"model":{"scale":1.36,"hHeadPos":0.523,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false}});</script></body>
+
+    </html>

@@ -1,0 +1,321 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+        <title>
+            Js变量的作用域 | 瓜田の鼹鼠的个人博客
+        </title>
+        <meta name="author" content="瓜田の鼹鼠">
+        <meta name="description" content="">
+        <meta name="keywords" content="瓜田里的鼹鼠,瓜田の鼹鼠的blog,鼹鼠的blog">
+        <link rel="icon" href="https://images2.alphacoders.com/661/thumbbig-661559.webp">
+        <script src="https://cdn.staticfile.org/instant.page/5.1.0/instantpage.min.js" type="module"></script>
+        <script src="https://cdn.staticfile.org/font-awesome/6.1.1/js/all.min.js"></script>
+        
+                <link rel="stylesheet" href="/css/fonts.min.css">
+                <link rel="stylesheet" href="/css/particlex.css">
+                <!-- 主页文章左边图片的css文件 -->
+                <link rel="stylesheet" href="/css/postimg.css">
+                
+                    <script src="https://cdn.staticfile.org/vue/3.2.33/vue.global.prod.min.js"></script>
+    <meta name="generator" content="Hexo 6.2.0"></head>
+
+    <body>
+        <!-- 加载动画 -->
+        <div id="loading"
+            style="height:100vh;width:100vw;position:fixed;display:flex;z-index:200;justify-content:space-between;background:#fff;transition:opacity 0.3s ease-out">
+            <div style="position:fixed;height:100vh;width:100vw;display:flex;justify-content:center;align-items:center">
+                <div id="loadcontent"
+                    style="width:50vmin;height:50vmin;padding:50px;border-radius:50%;display:flex;justify-content:center;align-items:center;border:solid 10px #a3ddfb;text-align:center">
+                    <div>
+                        <h2>LOADING...</h2>
+                        <p style="word-break:keep-all">加载过慢请开启缓存(浏览器默认开启)</p>
+                        <div><img alt="loading" src="/loading.gif"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="layout">
+            <i data-fa-symbol="calendar-solid" class="fa-solid fa-calendar fa-fw"></i>
+            <i data-fa-symbol="bookmark-solid" class="fa-solid fa-bookmark fa-fw"></i>
+            <i data-fa-symbol="tags-solid" class="fa-solid fa-tags fa-fw"></i>
+            <transition name="into">
+                <div v-show="show_page" style="display: -not-none">
+                    <div id="menu_show">
+                         
+<nav id="menu">
+    <div class="desktop-menu">
+        <a href="/">
+            <span class="title">瓜田の鼹鼠</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;主页</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;关于我</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;文章</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;分类</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;标签</span>
+        </a>
+        
+    </div>
+    <div :class="'phone-menu ' + menu_show" id="phone-menu">
+        <div class="curtain" @click="menu_show = !menu_show" v-show="menu_show"></div>
+        <div :class="'title'" @click="menu_show = !menu_show">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;瓜田の鼹鼠</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="menu_show">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">主页</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">关于我</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">文章</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">分类</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">标签</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+                    </div>
+                    <div id="main">
+                        
+    <div class="article">
+        <div>
+            <h1>
+                Js变量的作用域
+            </h1>
+        </div>
+        <div class="info">
+            <span class="date">
+                <span class="icon">
+                    <svg class="fa-icon">
+                        <use xlink:href="#calendar-solid"></use>
+                    </svg>
+                </span>
+                2023/3/1
+            </span>
+            
+                <span class="category">
+                    <span class="icon">
+                        <svg class="fa-icon">
+                            <use xlink:href="#bookmark-solid"></use>
+                        </svg>
+                    </span>
+                    
+                        <a href="/categories/js/" style="color: #38f;">
+                            js
+                        </a>
+                        
+                </span>
+                
+                    
+                        <span class="tags">
+                            <span class="icon">
+                                <svg class="fa-icon">
+                                    <use xlink:href="#tags-solid"></use>
+                                </svg>
+                            </span>
+                            
+                                <span class="tag">
+                                    
+                                        <a href="/tags/js/" style="color: #ff7d73">
+                                            js
+                                        </a>
+                                </span>
+                                
+                        </span>
+                        
+        </div>
+        <div class="content" v-pre>
+            <h1 id="1-局部作用域"><a href="#1-局部作用域" class="headerlink" title="1.局部作用域"></a>1.局部作用域</h1><p>局部作用域分为函数作用域和块作用域。</p>
+<h2 id="1-1函数作用域"><a href="#1-1函数作用域" class="headerlink" title="1.1函数作用域"></a>1.1函数作用域</h2><p>在函数内部声明的作用域，只能在函数内部被访问，外部无法直接访问。</p>
+<pre><code class="javascript">   function test()&#123;
+            const a = 10;
+            console.log(a,&quot;函数内部访问&quot;);
+        &#125;
+        test();
+        console.log(a,&quot;函数外部访问&quot;);
+</code></pre>
+<p>打开浏览器控制台，可以看到控制台打印了“函数内部访问”，而没有打印””函数外部访问”,而且显示”a is not defined”。</p>
+<img src="/js/js/%E4%BD%9C%E7%94%A8%E5%9F%9F/image-20230330135620341.png" class title="image-20230330135620341">
+
+<ul>
+<li>函数内部声明的变量，在函数外部无法直接访问。</li>
+<li>函数的参数也是函数的内部定义的局部变，在函数外部无法直接访问。</li>
+<li>不同函数内部声明的变量无法互相访问。</li>
+</ul>
+<h2 id="1-2块级作用域"><a href="#1-2块级作用域" class="headerlink" title="1.2块级作用域"></a>1.2块级作用域</h2><p>在JavaScript中使用{ }包裹的代码称为代码块，代码块内部声明的变量外部有可能无法被访问。</p>
+<pre><code class="javascript"> &#123;
+            let a = 10;
+            console.log(a,&quot;块级作用域内&quot;);
+ &#125;
+        console.log(a,&quot;块级作用域外&quot;);
+</code></pre>
+<img src="/js/js/%E4%BD%9C%E7%94%A8%E5%9F%9F/image-20230330140726529.png" class title="image-20230330140726529">
+
+<p><font color="#f38">注意</font>:使用var在块级作用域中定义的变量，外部可以访问。</p>
+<pre><code class="javascript">  &#123;
+            var a = 10;
+            console.log(a,&quot;块级作用域内&quot;);
+&#125;
+        console.log(a,&quot;块级作用域外&quot;);
+</code></pre>
+<img src="/js/js/%E4%BD%9C%E7%94%A8%E5%9F%9F/image-20230330140909887.png" class title="image-20230330140909887">
+
+<ul>
+<li>使用let声明的变量以及使用const声明的常量都会产生块级作用域，var声明的变量不会产生块级作用域。</li>
+<li>不同代码块之间的变量无法相互访问。</li>
+</ul>
+<h1 id="2-全局作用域"><a href="#2-全局作用域" class="headerlink" title="2.全局作用域"></a>2.全局作用域</h1><p>在script标签和.js文件的最外层就是就是全局作用域，在次声明的变量在函数内部也可以被访问。全局作用域中声明的变量，任何其它作用域都可以被访问。</p>
+<pre><code class="javascript">    //a,b是全局作用域
+        let a = 1;
+        let b =2;
+        function f()&#123;
+             
+        &#125;
+        f();
+</code></pre>
+<h1 id="3-作用域链"><a href="#3-作用域链" class="headerlink" title="3.作用域链"></a>3.作用域链</h1><p>作用域链的本质是底层的变量查找机制。</p>
+<ul>
+<li>在函数执行时，会优先在当前函数作用域中查找变量。</li>
+<li>如果当前作用域查找不到则会依次逐级查找父级作用域直到全局作用域。</li>
+</ul>
+<pre><code class="javascript">let a = 1;
+function f()&#123;
+    let a =10;
+    function g()&#123;
+        a =20;
+        console.log(a);
+    &#125;
+    console.log(a);
+    g();
+&#125;
+f();
+console.log(a); 
+</code></pre>
+<p>执行以上的代码，可以看到，依次打印了10、20、1。</p>
+<p>总结：</p>
+<ol>
+<li>嵌套关系的作用域串联起来形成了作用域链。</li>
+<li>相同作用域链中按照从小到大的规则查找变量。</li>
+<li>子作用域能够访问父作用域，父作用域无法访问子作用域。</li>
+</ol>
+
+        </div>
+        <!-- 文章导航栏,在文章的右侧 -->
+        <div id="content-left-nav">
+            <!-- //回到页面顶部 -->
+            <span id="go-to-top">
+                <a href="#main"><i class="fa-solid fa-caret-up"></i></a>
+            </span>
+        </div>
+        <!-- 引入文章标题导航栏js -->
+        <script src="/js/page-left-nav.js"></script>
+        <!-- 评论 -->
+        
+    </div>
+                             
+<footer id="footer">
+    <div class="footer-wrap">
+        <div>
+            © 2022 - 2023 瓜田の鼹鼠
+            <span class="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            @瓜田の鼹鼠
+        </div>
+        <div></div>
+        <div>Based on the <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo Engine</a> & <a
+                target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a></div>
+        
+        <div>
+            备案号：<a target="_blank" rel="noopener" href="http://beian.miit.gov.cn/">
+                渝ICP备2022014352号
+            </a>
+        </div>
+        
+    </div>
+</footer>
+                    </div>
+                </div>
+            </transition>
+            <div id="img_show">
+                <img id="img_content" alt="img_show">
+            </div>
+        </div>
+        <script src="https://cdn.staticfile.org/highlight.js/11.5.1/highlight.min.js"></script>
+        <script src="/js/particlex.js"></script>
+        <script src="/js/showimg.js"></script>
+        <!-- 引入接受名人名言的js文件 -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="/js/mingrenminyan.js"></script>
+        <!-- 引入鼠标点击特效的js文件 -->
+        <script src="/js/firework.js"></script>
+        <!-- 引入樱花背景飘落特效 -->
+        <canvas id="sakura"></canvas>
+        <script src="/js/sakura.js" type="module"></script>
+        
+
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"debug":false,"model":{"scale":1.36,"hHeadPos":0.523,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false}});</script></body>
+
+    </html>
